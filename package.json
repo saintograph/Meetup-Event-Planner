@@ -8,5 +8,9 @@
   },
   "engines": {
     "node": ">= 0.10"
+  },
+  "dependencies": {
+    "react-bootstrap": "^0.29.5",
+    "redux-auth": "0.0.2"
   }
 }

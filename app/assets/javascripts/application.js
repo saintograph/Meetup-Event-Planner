@@ -16,5 +16,13 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
+//= require jquery-ui-1.10.4.custom.min
+//= require bootstrap
+//= require bootstrap-datepicker
+//= require bootstrap-select
+//= require ct-paper
+//= require ct-paper-checkbox
+//= require ct-paper-radio 
+//= require hipster-cards
 //= require_tree .
 
