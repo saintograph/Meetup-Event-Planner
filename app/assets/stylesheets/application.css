@@ -11,5 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require ct-paper
+ *= require demo
+ *= require examples
+ *= require pe-icon-7-stroke
+ *= require bootstrap
  *= require_self
  */
+#testName, #testEmail, #testPassword, #confirmPassword2 {
+    margin: 0px;
+}

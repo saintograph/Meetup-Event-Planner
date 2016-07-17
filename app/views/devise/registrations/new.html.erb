@@ -2,26 +2,31 @@
     <div class="register-background"> 
         <div class="filter-black"></div>
             <div class="container">
-                            <p><small><%= devise_error_messages! %></small></p>
+            <p><small><%= devise_error_messages! %></small></p>
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" style="margin-top: 25px;">
                         <div class="register-card">
                             <h4 class="title">REGISTER</h4>
-                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"register-form") do |f| %>    
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" placeholder="e.g. John Doe" autofocus="true">
+                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"register-form", html: {novalidate: true}) do |f| %>    
+                                
+                                <%= f.label :name, for: "inputName" %>
+                                <%= f.email_field :name, id: "inputName", autofocus: true, class: "form-control", placeholder: "John Doe" %>
+                                <p id="testName"><small>Howdy!</small></p>
                                   
-                                <%= f.label :email, for: "email" %>
-                                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "john@evejet.com" %>
-
-                                <%= f.label :password %>
+                                <%= f.label :email, for: "inputEmail" %>
+                                <%= f.email_field :email, id: "inputEmail", class: "form-control", placeholder: "john@evejet.com" %>
+                                <p id="testEmail"><small>Pretty please?</small></p>
+                                
+                                <%= f.label :password, for: "inputPassword" %>
                                 <% if @minimum_password_length %>
-                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                <small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
                                 <% end %><br />
-                                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "••••••••" %>
+                                <%= f.password_field :password, id: "inputPassword", autocomplete: "off", class: "form-control", placeholder: "••••••••" %>
+                                <p id="testPassword"><small>Secure password example: <em>X%LlVcFg7B1%</em><br />Make Turing sweat!</small></p>
 
                                 <%= f.label :password_confirmation %><br />
-                                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control",  placeholder: "••••••••" %>
+                                <%= f.password_field :password_confirmation, id: "confirmPassword", autocomplete: "off", class: "form-control",  placeholder: "••••••••" %>
+                                <p id="confirmPassword2"><small>Confirm your password</small></p>
 
                                 <%= f.submit "Register", class: "btn btn-danger btn-block" %>
 
