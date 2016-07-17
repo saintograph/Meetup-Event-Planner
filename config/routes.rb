@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
   
+  get 'current_user' => "users#current_user"
+  
   namespace :api do
     namespace :v1 do
       resources :events, only: [:index, :create, :destroy, :update]

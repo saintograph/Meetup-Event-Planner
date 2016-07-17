@@ -1,5 +1,21 @@
 var SetupForm = React.createClass({
     
+    handleClick() {
+        var name = this.refs.name.value;
+        var start_date = this.refs.start_date.value;
+        var end_date = this.refs.end_date.value;
+        var location = this.refs.location.value;
+        var add_info = this.refs.add_info.value;
+        
+        $.ajax({
+            url: 'api/v1/events',
+            type: 'POST',
+            data: { event: { title: name, location: location, agenda: add_info, user_id: "<% current_user.id %>" } },
+            success: (response) => {
+                console.log('event posted', response)
+            }        
+        });
+    },
     
     render() {
         return (
@@ -8,7 +24,7 @@ var SetupForm = React.createClass({
                 <div className="row">
                     <div className="col-md-6">
                         <label>Name</label>
-                        <input className="form-control" type="name" placeholder="e.g 'Water Balloon Festival'"/>
+                        <input ref='name' className="form-control" type="text" placeholder="e.g 'Water Balloon Festival'"/>
                     </div>
                     <div className="col-md-6">
                         <label>Type of Event</label>
@@ -25,11 +41,11 @@ var SetupForm = React.createClass({
                 <div className="row">
                     <div className="col-md-6 col-xs-6">
                         <label for="">When does it start?</label>
-                        <input className="datepicker form-control" type="text" placeholder="Start Date"/>
+                        <input ref='start_date' className="datepicker form-control" type="text" placeholder="Start Date"/>
                     </div>
                     <div className="col-md-6 col-xs-6">
                         <label for="">When does it end?</label>
-                        <input className="datepicker form-control" type="text" placeholder="End Date"/>
+                        <input ref='end_date' className="datepicker form-control" type="text" placeholder="End Date"/>
                     </div>
                 </div>
                 <div className="row">
@@ -41,14 +57,15 @@ var SetupForm = React.createClass({
                 <div className="row">
                     <div className="col-md-12">
                         <label for="">Location</label>
-                        <input className="form-control" placeholder="e.g. Ibiza"/>
+                        <input ref='location' className="form-control" placeholder="e.g. Ibiza"/>
                     </div>
                 </div>
                 <label>ADDITIONAL INFORMATION<small><em>( for your guests )</em></small></label>
-                <textarea className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
+                <textarea ref='add_info' className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
+                
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4">
-                        <a href="/event_display.html" className="btn btn-danger btn-block btn-lg btn-fill">Organize</a>
+                        <a onClick= { this.handleClick } className="btn btn-danger btn-block btn-lg btn-fill">Organize</a>
                     </div>
                 </div>
             </form>

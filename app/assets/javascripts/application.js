@@ -26,6 +26,7 @@
 //= require hipster-cards
 //= require_tree .
 
+
 $(document).ready(function(){
     $("input#inputName").blur(function(){
         var input2 = document.getElementById('inputName').value;
