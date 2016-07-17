@@ -10,7 +10,7 @@ var SetupForm = React.createClass({
         $.ajax({
             url: 'api/v1/events',
             type: 'POST',
-            data: { event: { title: name, location: location, agenda: add_info, user_id: "<% current_user.id %>" } },
+            data: { event: { title: name, address: location, start_date: start_date, end_date: end_date, agenda: add_info, organizer_id: "<% current_user.id %>" } },
             success: (response) => {
                 console.log('event posted', response)
             }        

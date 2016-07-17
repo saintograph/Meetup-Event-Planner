@@ -1,5 +1,5 @@
 class Api::V1::EventsController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   # before_filter :authenticate_user!
 
@@ -26,8 +26,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   # POST /events
   # POST /events.json
   def create
-    respond_with :api, :v1, Event.create(event_params)
-    @event.user_id = current_user.id
+    respond_with :api, :v1, Event.create(event_params.merge(user_id: current_user.id))
   end
 
   # PATCH/PUT /events/1
