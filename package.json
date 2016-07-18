@@ -10,7 +10,10 @@
     "node": ">= 0.10"
   },
   "dependencies": {
+    "history": "^3.0.0",
     "react-bootstrap": "^0.29.5",
+    "react-date-picker": "^5.3.23",
+    "react-dom": "^15.2.1",
     "redux-auth": "0.0.2"
   }
 }

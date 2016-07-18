@@ -45,7 +45,6 @@ var Main = React.createClass({
                         </div>
                     </div>
                 </div>
-                
             </div>
             <Footer />
         </div>

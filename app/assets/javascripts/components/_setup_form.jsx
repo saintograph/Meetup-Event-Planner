@@ -40,27 +40,27 @@ var SetupForm = React.createClass({
                 </div>
                 <div className="row">
                     <div className="col-md-6 col-xs-6">
-                        <label for="">When does it start?</label>
+                        <label htmlFor="">When does it start?</label>
                         <input ref='start_date' className="datepicker form-control" type="text" placeholder="Start Date"/>
                     </div>
                     <div className="col-md-6 col-xs-6">
-                        <label for="">When does it end?</label>
+                        <label htmlFor="">When does it end?</label>
                         <input ref='end_date' className="datepicker form-control" type="text" placeholder="End Date"/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <label for="">Guest list</label>
+                        <label htmlFor="">Guest list</label>
                         <input className="form-control" placeholder="End Date"/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <label for="">Location</label>
+                        <label htmlFor="">Location</label>
                         <input ref='location' className="form-control" placeholder="e.g. Ibiza"/>
                     </div>
                 </div>
-                <label>ADDITIONAL INFORMATION<small><em>( for your guests )</em></small></label>
+                <label>ADDITIONAL INFORMATION<small><em> ( for your guests )</em></small></label>
                 <textarea ref='add_info' className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
                 
                 <div className="row">
