@@ -53,3 +53,4 @@ gem 'browserify-rails'
 gem 'responders'
 gem 'devise'
 gem 'simple_form'
+

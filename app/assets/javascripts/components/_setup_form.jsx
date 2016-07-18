@@ -74,3 +74,4 @@ var SetupForm = React.createClass({
     }
 });
 
+module.exports = SetupForm;
