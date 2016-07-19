@@ -1,6 +1,4 @@
-
-var Main = React.createClass({ 
-    
+var Main = React.createClass({
     render() {
         return ( 
             <div>
@@ -52,6 +50,5 @@ var Main = React.createClass({
         )
     }
 });
-
 
 module.exports = Main;

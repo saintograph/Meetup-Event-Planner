@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require components
 //= require jquery-ui-1.10.4.custom.min
+//= require components
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-select
@@ -23,6 +23,7 @@
 //= require ct-paper-radio 
 //= require hipster-cards
 //= require_tree .
+
 
 
 $(document).ready(function(){

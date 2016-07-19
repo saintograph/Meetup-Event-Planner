@@ -17,6 +17,7 @@
  *= require pe-icon-7-stroke
  *= require bootstrap
  *= require index
+ *= require hipster_cards
  *= require_self
  */
 #testName, #testEmail, #testPassword, #confirmPassword2 {

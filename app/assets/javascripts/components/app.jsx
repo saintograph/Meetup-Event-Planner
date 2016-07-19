@@ -1,47 +1,55 @@
 var App = React.createClass({
- 
     render() {
         return (
-        <div id="app">
-
-            <nav className="navbar navbar-ct-transparent navbar-relative " role="navigation-demo" id="register-navbar">
-                <div className="container">
-
-                    <div className="navbar-header">
-                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span className="sr-only">Toggle navigation</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" href="index.html">Evejet</a>
+              <div>
+                <div className="wrapper">
+                    <div className="profile-background"> 
+                        <div className="filter-black"></div>  
                     </div>
-                
-
-                    <div className="collapse navbar-collapse" id="navigation-example-2">
-                    <ul className="nav navbar-nav navbar-right">
-                        <li>
-                            <Link to="main">Main</Link>
-                        </li>
-                        <li>
-                            <p>Link</p>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" className="btn btn-simple"><i className="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" className="btn btn-simple"><i className="fa fa-facebook"></i></a>
-                        </li>
-                    </ul>
+                    <div className="profile-content section-nude">
+                        <div className="container">
+                            <div className="row owner">
+                                <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
+                                    <div className="avatar">
+                                        <img src="/assets/logo.jpg" alt="Circle Image" className="img-circle img-no-padding img-responsive"/>
+                                    </div>
+                                </div>
+                                <div className="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
+                                    <div className="name">
+                                        <h4>Hi fellow<br /><small>organize something awesome</small></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6 col-md-offset-3 text-center">
+                                    <p></p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div className="section landing-section">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-8 col-md-offset-2">
+                                <small><em>you're almost done!</em></small>
+                                    <div className="progress">
+                                        <div className="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style={{ width: 50 + '%' }}>
+                                            <span className="sr-only">60% Complete</span>
+                                        </div>
+                                    </div>
+                                    <h2 className="text-center">Lets do this! JSX tag below</h2>
+                                    {this.props.children}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </nav> 
+                <Footer />
+            </div>
+        )
+    }
+}); 
 
-            <RouteHandler {...this.props}/>
-
-        </div>
-    );
-  }
-});
 
 module.exports = App;

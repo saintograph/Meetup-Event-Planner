@@ -1,25 +1,34 @@
 //= require_self
 //= require react_ujs
-
 React = require('react');
-// require additional React components below this line
 ReactDOM = require('react-dom');
-Router = require('react-router');
-Link = Router.Link;
-DefaultRoute = Router.DefaultRoute;
-Route = Router.Route;
-RouteHandler = Router.RouteHandler;
-IndexRoute = Router.IndexRoute;
-
-
+// require additional React components below this line
+ReactRouter = require('react-router');
+Route = ReactRouter.Route;
+Router = ReactRouter.Router;
+DefaultRoute = ReactRouter.DefaultRoute;
+RouteHandler = ReactRouter.RouteHandler;
+IndexRoute = ReactRouter.IndexRoute;
+Link = ReactRouter.Link;
+hashHistory = ReactRouter.hashHistory;
+browserHistory = ReactRouter.browserHistory;
 
 App = require('./components/app.jsx');
 Main = require('./components/main.jsx');
-NavBar = require('./components/_navbar.jsx');
 Footer = require('./components/_footer.jsx');
+NewEvent = require('./components/_new_event.jsx');
+AllEvents = require('./components/_all_events.jsx');
+NavBar = require('./components/_navbar.jsx');
 
-//= require routes
 
-Router.run(routes, Router.HistoryLocation, function (RouteHandler) {
-    React.render(<RouteHandler/>, document.getElementById("app"));
-});
+
+const app = document.getElementById('app');
+
+ReactDOM.render(
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <IndexRoute component={AllEvents}></IndexRoute>
+            <Route path="new" component={NewEvent}></Route>
+        </Route>
+    </Router>
+, document.getElementById('app'));
