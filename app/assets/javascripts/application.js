@@ -22,6 +22,7 @@
 //= require ct-paper-checkbox
 //= require ct-paper-radio 
 //= require hipster-cards
+//= require bootstrap-tagsinput.min
 //= require_tree .
 
 

@@ -12,7 +12,7 @@ var NewEvent = React.createClass({
             type: 'POST',
             data: { event: { title: name, address: location, start_date: start_date, end_date: end_date, agenda: add_info, organizer_id: "<% current_user.id %>" } },
             success: (response) => {
-                console.log('event posted', response)
+                console.log("yay!");
             }        
         });
     },
@@ -30,18 +30,18 @@ var NewEvent = React.createClass({
                                         <span className="sr-only">60% Complete</span>
                                     </div>
                                 </div>
-                                <h2 className="text-center">Organize your awesome event!</h2>
+                                <h2 className="text-center">Event host</h2>
                                 {/* insert form here */}
                                     <form className="contact-form">
                                         <div className="row">
-                                            <div className="col-md-6">
-                                                <label>Name</label>
-                                                <input className="form-control" type="name" placeholder="e.g 'Water Balloon Festival'"/>
+                                            <div className="col-md-6 col-xs-12">
+                                                <label htmlFor="eventName">Give your event a name :</label>
+                                                <input id="eventName" className="form-control" type="name" placeholder="e.g 'Joe's Water Balloon Festival'"/>
                                             </div>
-                                            <div className="col-md-6">
-                                                <label>Type of Event</label>
-                                                <input className="form-control" list="eventType" placeholder="e.g Party, Meeting"/>
-                                                <datalist id="eventType">
+                                            <div className="col-md-6 col-xs-12">
+                                                <label htmlFor="eventType">Type of Event</label>
+                                                <input className="form-control" id="eventType" list="eventTypeList" placeholder="e.g Party, Meeting"/>
+                                                <datalist id="eventTypeList">
                                                     <option value="Party"></option>
                                                     <option value="Meeting"></option>
                                                     <option value="Conference"></option>
@@ -51,32 +51,38 @@ var NewEvent = React.createClass({
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col-md-6 col-xs-6">
-                                                <label htmlFor="">When does it start?</label>
-                                                <input className="datepicker form-control" type="text" placeholder="Start Date"/>
+                                            <div className="col-md-12 col-xs-12">
+                                                <label htmlFor="startDate">When does it start?</label>
+                                                <Datetime 
+                                                    closeOnSelect= {true} />
                                             </div>
-                                            <div className="col-md-6 col-xs-6">
-                                                <label htmlFor="">When does it end?</label>
-                                                <input className="datepicker form-control" type="text" placeholder="End Date"/>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                                <label htmlFor="">Guest list</label>
-                                                <input className="form-control" placeholder="End Date"/>
+                                            <div className="col-md-12 col-xs-12">
+                                                <label htmlFor="endDate">When does it end?</label>
+                                                <Datetime
+                                                    closeOnSelect= {true} />
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col-md-12">
-                                                <label htmlFor="">Location</label>
-                                                <input className="form-control" placeholder="e.g. Ibiza"/>
+                                            <div className="col-md-12 col-xs-12">
+                                                <label htmlFor="eventGuestList">Guest list</label>
+                                                <input id="eventGuestList" className="form-control" placeholder="Type their names and hit 'Enter'" data-role="tagsinput"/>
                                             </div>
                                         </div>
-                                        <label>ADDITIONAL INFORMATION<small><em> ( for your guests )</em></small></label>
-                                        <textarea className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
+                                        <div className="row">
+                                            <div className="col-md-12 col-xs-12">
+                                                <label htmlFor="eventLocation">Location</label>
+
+                                                <Geosuggest
+                                                    id="eventLocation"
+                                                    className="form-control"
+                                                    placeholder="e.g Ibiza" />
+                                            </div>
+                                        </div>
+                                        <label htmlFor="eventInfo">ADDITIONAL INFORMATION<small><em> ( for your guests )</em></small></label>
+                                        <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
                                         <div className="row">
                                             <div className="col-md-4 col-md-offset-4">
-                                                <a href="/event_display.html" className="btn btn-danger btn-block btn-lg btn-fill">Organize</a>
+                                                <button className="btn btn-danger btn-block btn-lg btn-fill">Organize</button>
                                             </div>
                                         </div>
                                 </form>

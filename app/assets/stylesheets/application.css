@@ -16,6 +16,9 @@
  *= require examples
  *= require ct-paper
  *= require pe-icon-7-stroke
+ *= require geosuggest
+ *= require bootstrap-tagsinput
+ *= require react-datetime
  *= require_self
  */
 
