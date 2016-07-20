@@ -27,7 +27,17 @@
                                 <%= f.label :password_confirmation %><br />
                                 <%= f.password_field :password_confirmation, id: "confirmPassword", autocomplete: "off", class: "form-control",  placeholder: "••••••••" %>
                                 <p id="confirmPassword2"><small>Confirm your password</small></p>
-
+                                
+                                <%= f.label :title, for: "inputTitle" %>
+                                <%= f.text_field :title, id: "inputTitle", list:"titles", class: "form-control", placeholder: "e.g. Ser, Maester, Khal" %>
+                                <datalist id="titles">
+                                    <option value="King of The North"></option>
+                                    <option value="Ser"></option>
+                                    <option value="No One"></option>
+                                    <option value="Maester"></option>
+                                    <option value="Khal"></option>
+                                </datalist>
+                                
                                 <%= f.submit "Register", class: "btn btn-danger btn-block" %>
 
                             <% end %>

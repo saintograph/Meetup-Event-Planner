@@ -2,6 +2,7 @@ class User < ApplicationRecord
   #winfred, winfred@example.com, XHLlVcFG7B1%
   #test, test2@example.com, XHLlVcFG7B1%
   #test3,test3@example.com XHLlVcFG7B1%
+  #Jon Snow, jon@winterfell.com, XHLlVcFG7B1%
   #test4 , same as above, same as above
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -28,10 +28,10 @@ NavBar = require('./components/_navbar.jsx');
 const app = document.getElementById('app');
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute component={AllEvents}></IndexRoute>
-            <Route path="new" component={NewEvent}></Route>
-        </Route>
-    </Router>
+        <Router history={hashHistory}>
+            <Route path="/" component={App}>
+                <IndexRoute component={AllEvents}></IndexRoute>
+                <Route path="new" component={NewEvent}></Route>
+            </Route>
+        </Router>
 , document.getElementById('app'));

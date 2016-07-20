@@ -1,6 +1,22 @@
 var App = React.createClass({
+    
+    getInitialState() { 
+        return { events: [] } 
+    }, 
+    
+    componentDidMount() { 
+        $.getJSON('/api/v1/events.json', (response) => { this.setState({ events: response }) }); 
+    }, 
+    
+    handleSubmit(event) { 
+        var newState = this.state.events.concat(event); 
+        this.setState({ events: newState }) 
+    },
+
+ 
     render() {
         return (
+
               <div>
                 <NavBar />
                 <div className="wrapper">
@@ -28,8 +44,11 @@ var App = React.createClass({
                                 </div>
                             </div>
                         </div>
-                    </div> 
-                    {this.props.children}
+                    </div>
+                    
+
+                    {/*{this.props.children}*/}
+                    {/*<RouteHandler />*/}
                 </div>
                 <Footer />
             </div>
