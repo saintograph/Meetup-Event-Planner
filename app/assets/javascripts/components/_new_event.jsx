@@ -1,18 +1,37 @@
 var NewEvent = React.createClass({
     
     handleClick() {
-        var name = this.refs.name.value;
-        var start_date = this.refs.start_date.value;
-        var end_date = this.refs.end_date.value;
-        var location = this.refs.location.value;
-        var add_info = this.refs.add_info.value;
+{/*        var name = this.refs.name.value; 
+            var start_date = document.getElementById('startDate').value;
+        var end_date = document.getElementById('endDate').value;*/}
+
+
+
+{/*        var start_date = this.refs.start_date.value; */}
+{/*        var end_date = this.refs.end_date.value; */}
+{/*        var location = this.refs.location.value; */}
+{/*        var add_info = this.refs.add_info.value; */}
+        
+        var name = document.getElementById('eventName').value;
+        var start_date = document.getElementById('startDate').value;
+        var end_date = document.getElementById('endDate').value;
+        var location = document.getElementById('eventLocation').value;
+        var add_info = document.getElementById('eventInfo').value;
         
         $.ajax({
             url: 'api/v1/events',
             type: 'POST',
-            data: { event: { title: name, address: location, start_date: start_date, end_date: end_date, agenda: add_info, user_id: "<%= current_user.id %>" } },
+            data: { event: {
+                title: name, 
+                address: location, 
+                start_date: start_date, 
+                end_date: end_date, 
+                agenda: add_info, 
+                user_id: "<%= current_user.id %>" 
+            }},
             success: (response) => {
                 this.props.handleSubmit(event);
+                window.location.href = "http://localhost:3000/";
             }        
         });
     },
@@ -36,7 +55,7 @@ var NewEvent = React.createClass({
                                         <div className="row">
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventName">Give your event a name :</label>
-                                                <input id="eventName" ref='name' className="form-control" type="name" placeholder="e.g 'Joe's Water Balloon Festival'"/>
+                                                <input id="eventName" className="form-control" type="name" placeholder="e.g 'Joe's Water Balloon Festival'"/>
                                             </div>
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventType">Type of Event</label>
@@ -54,13 +73,17 @@ var NewEvent = React.createClass({
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="startDate">When does it start?</label>
                                                 <Datetime
-                                                    ref="start_date" 
+                                                    dateFormat="dddd"
+                                                    input={true}
+                                                    inputProps={{id:"startDate"}}
                                                     closeOnSelect= {true} />
                                             </div>
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="endDate">When does it end?</label>
                                                 <Datetime
-                                                    ref="end_date"
+                                                    dateFormat="dddd"
+                                                    input={true}
+                                                    inputProps={{id:"endDate"}}
                                                     closeOnSelect= {true} />
                                             </div>
                                         </div>
@@ -76,13 +99,12 @@ var NewEvent = React.createClass({
 
                                                 <Geosuggest
                                                     id="eventLocation"
-                                                    ref="location"
                                                     className="form-control"
                                                     placeholder="e.g Ibiza" />
                                             </div>
                                         </div>
                                         <label htmlFor="eventInfo">ADDITIONAL INFORMATION<small><em> ( for your guests )</em></small></label>
-                                        <textarea ref="add_info" id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
+                                        <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
                                         <div className="row">
                                             <div className="col-md-4 col-md-offset-4">
                                                 <button className="btn btn-danger btn-block btn-lg btn-fill" onClick={this.handleClick}>Organize</button>

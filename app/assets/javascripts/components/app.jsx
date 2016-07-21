@@ -56,8 +56,8 @@ var App = React.createClass({
                     {/* {React.cloneElement(this.props.children, {  events: this.state.events })} */}
                     {React.cloneElement(
                         this.props.children, 
-                        { handleSubmit: this.handleSubmit }, 
-                        { events: this.state.events } 
+                        { handleSubmit: this.handleSubmit, 
+                         events: this.state.events } 
                     )}
                 </div>
                 <Footer />

@@ -4,8 +4,10 @@ var AllEvents = React.createClass({
         var events = this.props.events.map((event) => {
            return (
                <div key={event.id}>
-                    <h3>{event.title}</h3>
-                    <p>{event.address}</p>
+                    <h4>{event.title}</h4>
+                        <p>{event.address}</p>
+                        <p>{event.start_date}</p>
+                        <p>{event.end_date}</p>
                </div>
            ) 
         });
