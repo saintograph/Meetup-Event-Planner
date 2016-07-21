@@ -25,3 +25,7 @@
 #testName, #testEmail, #testPassword, #confirmPassword2 {
     margin: 0px;
 }
+
+.button-text {
+    color: #ffffff !important;
+}

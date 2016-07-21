@@ -12,13 +12,12 @@ var App = React.createClass({
         var newState = this.state.events.concat(event); 
         this.setState({ events: newState }) 
     },
-
  
     render() {
         return (
 
               <div>
-                <NavBar />
+                {/* <NavBar /> */}
                 <div className="wrapper">
                     <div className="profile-background"> 
                         <div className="filter-black"></div>  
@@ -34,6 +33,14 @@ var App = React.createClass({
                                 <div className="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
                                     <div className="name">
                                         <h4>Hey there,<br /><small>organize something awesome</small></h4>
+                                        <div className="row">
+                                            <div className="col-md-6 col-xs-6">
+                                                <button className="btn btn-warning btn-block btn-fill button-text"><Link to="new"><span className="button-text">New Event</span></Link></button>
+                                            </div>
+                                            <div className="col-md-6 col-xs-6">
+                                                <button className="btn btn-warning btn-block btn-fill"><Link to="/"><span className="button-text">All Events</span></Link></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -45,10 +52,9 @@ var App = React.createClass({
                             </div>
                         </div>
                     </div>
-                    
+                    {/* this is a comment */}
+                    {React.cloneElement(this.props.children, {  events: this.state.events })}
 
-                    {/*{this.props.children}*/}
-                    {/*<RouteHandler />*/}
                 </div>
                 <Footer />
             </div>
