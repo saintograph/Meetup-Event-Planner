@@ -34,10 +34,10 @@ var App = React.createClass({
                                     <div className="name">
                                         <h4>Hey there,<br /><small>organize something awesome</small></h4>
                                         <div className="row">
-                                            <div className="col-md-6 col-xs-6">
-                                                <button className="btn btn-warning btn-block btn-fill button-text"><Link to="new"><span className="button-text">New Event</span></Link></button>
+                                            <div className="col-md-6">
+                                                <button className="btn btn-warning btn-block btn-fill"><Link to="new"><span className="button-text">New Event</span></Link></button>
                                             </div>
-                                            <div className="col-md-6 col-xs-6">
+                                            <div className="col-md-6">
                                                 <button className="btn btn-warning btn-block btn-fill"><Link to="/"><span className="button-text">All Events</span></Link></button>
                                             </div>
                                         </div>
