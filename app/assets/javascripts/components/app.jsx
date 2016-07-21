@@ -53,8 +53,12 @@ var App = React.createClass({
                         </div>
                     </div>
                     {/* this is a comment */}
-                    {React.cloneElement(this.props.children, {  events: this.state.events })}
-
+                    {/* {React.cloneElement(this.props.children, {  events: this.state.events })} */}
+                    {React.cloneElement(
+                        this.props.children, 
+                        { handleSubmit: this.handleSubmit }, 
+                        { events: this.state.events } 
+                    )}
                 </div>
                 <Footer />
             </div>

@@ -1,6 +1,6 @@
 class Api::V1::EventsController < Api::V1::BaseController
   # skip_before_action :verify_authenticity_token
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  # before_action :set_event, only: [:show, :edit, :update, :destroy]
   # before_filter :authenticate_user!
 
   # GET /events
@@ -9,22 +9,6 @@ class Api::V1::EventsController < Api::V1::BaseController
     respond_with Event.all
   end
 
-  # GET /events/1
-  # GET /events/1.json
-  # def show
-  # end
-
-  # GET /events/new
-  # def new
-  #   @event = Event.new
-  # end
-
-  # GET /events/1/edit
-  # def edit
-  # end
-
-  # POST /events
-  # POST /events.json
   def create
     respond_with :api, :v1, Event.create(event_params.merge(user_id: current_user.id))
   end
