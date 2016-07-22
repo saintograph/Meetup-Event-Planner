@@ -1,22 +1,25 @@
 var NewEvent = React.createClass({
+
+    getInitialState: function(){
+      return {
+          tags: []
+      }  
+    },
     
+    handleChange(tags) {
+        tags = tags.concat("/");
+        this.setState({tags})
+    },
+        
     handleClick() {
-{/*        var name = this.refs.name.value; 
-            var start_date = document.getElementById('startDate').value;
-        var end_date = document.getElementById('endDate').value;*/}
-
-
-
-{/*        var start_date = this.refs.start_date.value; */}
-{/*        var end_date = this.refs.end_date.value; */}
-{/*        var location = this.refs.location.value; */}
-{/*        var add_info = this.refs.add_info.value; */}
         
         var name = document.getElementById('eventName').value;
         var start_date = document.getElementById('startDate').value;
         var end_date = document.getElementById('endDate').value;
         var location = document.getElementById('eventLocation').value;
         var add_info = document.getElementById('eventInfo').value;
+        var foo = $("#eventGuestList").text();
+        var guests = String(foo.split("/").join(", "));
         
         $.ajax({
             url: 'api/v1/events',
@@ -26,7 +29,8 @@ var NewEvent = React.createClass({
                 address: location, 
                 start_date: start_date, 
                 end_date: end_date, 
-                agenda: add_info, 
+                agenda: add_info,
+                guests: guests, 
                 user_id: "<%= current_user.id %>" 
             }},
             success: (response) => {
@@ -55,11 +59,11 @@ var NewEvent = React.createClass({
                                         <div className="row">
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventName">Give your event a name :</label>
-                                                <input id="eventName" className="form-control" type="name" placeholder="e.g 'Joe's Water Balloon Festival'"/>
+                                                <input id="eventName" className="form-control" type="name" placeholder="e.g 'Joe's Water Balloon Festival'" required/>
                                             </div>
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventType">Type of Event</label>
-                                                <input className="form-control" id="eventType" list="eventTypeList" placeholder="e.g Party, Meeting"/>
+                                                <input className="form-control" id="eventType" list="eventTypeList" placeholder="e.g Party, Meeting" required/>
                                                 <datalist id="eventTypeList">
                                                     <option value="Party"></option>
                                                     <option value="Meeting"></option>
@@ -90,7 +94,13 @@ var NewEvent = React.createClass({
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventGuestList">Guest list</label>
-                                                <input id="eventGuestList" className="form-control" placeholder="Type their names and hit 'Enter'" data-role="tagsinput"/>
+                                                <span id="eventGuestList">
+                                                <TagsInput 
+                                                    value={this.state.tags} 
+                                                    onChange={this.handleChange}
+                                                    onlyUnique
+                                                    />
+                                                </span>
                                             </div>
                                         </div>
                                         <div className="row">

@@ -22,7 +22,6 @@
 //= require ct-paper-checkbox
 //= require ct-paper-radio 
 //= require hipster-cards
-//= require bootstrap-tagsinput.min
 //= require_tree .
 
 
@@ -37,7 +36,6 @@ $(document).ready(function(){
         } else {
             change2.innerHTML = '<small>' + 'Please provide a valid name' + '</small>';
         }
-        console.log("it works here too");
     });
     $("input#inputEmail").blur(function(){
         var item = document.getElementById('inputEmail').value;

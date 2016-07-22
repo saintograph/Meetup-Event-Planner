@@ -15,6 +15,7 @@ browserHistory = ReactRouter.browserHistory;
 Datetime = require('react-datetime');
 moment = require('moment');
 Geosuggest = require('react-geosuggest').default;
+TagsInput = require('react-tagsinput');
 
 App = require('./components/app.jsx');
 Main = require('./components/main.jsx');
