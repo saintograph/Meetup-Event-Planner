@@ -25,7 +25,6 @@ AllEvents = require('./components/_all_events.jsx');
 NavBar = require('./components/_navbar.jsx');
 
 
-
 const app = document.getElementById('app');
 
 var routes = (

@@ -3,6 +3,7 @@ var NewEvent = React.createClass({
     getInitialState: function(){
       return {
           tags: []
+
       }  
     },
     
@@ -10,7 +11,8 @@ var NewEvent = React.createClass({
         tags = tags.concat("/");
         this.setState({tags})
     },
-        
+    
+      
     handleClick() {
         
         var name = document.getElementById('eventName').value;
@@ -20,6 +22,7 @@ var NewEvent = React.createClass({
         var add_info = document.getElementById('eventInfo').value;
         var foo = $("#eventGuestList").text();
         var guests = String(foo.split("/").join(", "));
+        var hostName = document.getElementById('eventHost').value;
         
         $.ajax({
             url: 'api/v1/events',
@@ -30,7 +33,8 @@ var NewEvent = React.createClass({
                 start_date: start_date, 
                 end_date: end_date, 
                 agenda: add_info,
-                guests: guests, 
+                guests: guests,
+                host_name: hostName, 
                 user_id: "<%= current_user.id %>" 
             }},
             success: (response) => {
@@ -41,6 +45,89 @@ var NewEvent = React.createClass({
     },
     
     render() {
+        {/* Validations */}
+        {/* event name validation */}
+        $("input#eventName").blur(function(){
+            var inputEventName = document.getElementById('eventName').value;
+            var inputEventNameTest = /[a-zA-Z0-9]+/.test(inputEventName);
+            var inputEventNameCh = document.getElementById('eventNameVal');
+            if(inputEventNameTest == true) {
+                inputEventNameCh.innerHTML = '<small>' + inputEventName + " sounds like fun" + '</small>';
+            } else {
+                inputEventNameCh.innerHTML = '<small>' + "Please give your event a name" + '</small>';
+            }
+        });
+        
+        {/* event host validation */}
+        $("input#eventHost").blur(function(){
+            var inputEventHost = document.getElementById('eventHost').value;
+            var inputEventHostTest = /[a-zA-Z0-9]+/.test(inputEventHost);
+            var inputHostNameCh = document.getElementById('eventHostVal');
+            if(inputEventHostTest == true) {
+                inputHostNameCh.innerHTML = '<small>' + "Does " + inputEventHost + " know any good jokes?" + '</small>';
+            } else {
+                inputHostNameCh.innerHTML = '<small>' + "Please give your event a host" + '</small>';
+            }
+        });
+        
+        {/* event type validation */}
+        $("input#eventType").blur(function(){
+            var inputEventType = document.getElementById('eventType').value;
+            var inputEventTypeTest = /[a-zA-Z0-9]+/.test(inputEventType);
+            var inputTypeNameCh = document.getElementById('eventTypeVal');
+            if(inputEventTypeTest == true) {
+                inputTypeNameCh.innerHTML = '<small>' + "A " + inputEventType.toLowerCase() + " it is!" + '</small>';
+            } else {
+                inputTypeNameCh.innerHTML = '<small>' + "Please enter the type of event" + '</small>';
+            }
+        });
+    
+        
+        {/* date validations */}
+        $("input#endDate").blur(function(){
+            var start_date = new Date(document.getElementById('startDate').value);
+            var end_date = new Date(document.getElementById('endDate').value);
+            var test = document.getElementById("dateVal");
+            console.log(start_date);
+            console.log(end_date);
+            if(start_date < end_date){
+                test.innerHTML = "Thank you!"; 
+            } else {
+                test.innerHTML = "Please enter an end date after the start date"; 
+            }   
+        });
+
+        {/* make sure dates selected are not in the past */}
+        var yesterday = Datetime.moment().subtract(1,'day');
+        var valid = function( current ){
+            return current.isAfter( yesterday );
+        };
+        
+        {/* guest list validations */}
+        $("input#eventGuestList").blur(function(){
+            var guestList = $("#eventGuestList").text();
+            var innerGuestList = document.getElementById("guestList2");
+            if(guestList == ""){
+                innerGuestList.innerHTML = "Please enter some guest names";
+            }
+        });
+        
+        
+        {/* location validations */}
+        $("input#eventLocation").blur(function(){
+            var inputEventLocation = document.getElementById('eventLocation').value;
+            var inputEventLocationTest = /[a-zA-Z0-9]+/.test(inputEventLocation);
+            var inputLocationCh = document.getElementById('eventLocationVal');
+            if(inputEventLocationTest == true) {
+                inputLocationCh.innerHTML = '<small>' + "Thank you!" + '</small>';
+            } else {
+                inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
+            }
+        });
+        
+        
+        {/* end validations */}
+        
         return (
             <div>
                 <div className="section landing-section">
@@ -53,17 +140,26 @@ var NewEvent = React.createClass({
                                         <span className="sr-only">60% Complete</span>
                                     </div>
                                 </div>
-                                <h2 className="text-center">Event host</h2>
+                                <h2 className="text-center">Create an event</h2>
                                 {/* insert form here */}
                                     <form className="contact-form">
                                         <div className="row">
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventName">Give your event a name :</label>
-                                                <input id="eventName" className="form-control" type="name" placeholder="e.g 'Joe's Water Balloon Festival'" required/>
+                                                <input type="text" id="eventName" className="form-control" placeholder="e.g Battle of Winterfell" required autoFocus/>
+                                                <p id="eventNameVal"><small>Give the event a fun name</small></p>
                                             </div>
                                             <div className="col-md-6 col-xs-12">
+                                                <label htmlFor="eventHost">Who's the host?</label>
+                                                <input type="text" name="fname" autoComplete="on" className="form-control" id="eventHost" placeholder="e.g Ramsay Bolton" required/>
+                                                <p id="eventHostVal"><small>Who's hosting it?</small></p>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventType">Type of Event</label>
                                                 <input className="form-control" id="eventType" list="eventTypeList" placeholder="e.g Party, Meeting" required/>
+                                                <p id="eventTypeVal"><small>What kind of event is it?</small></p>
                                                 <datalist id="eventTypeList">
                                                     <option value="Party"></option>
                                                     <option value="Meeting"></option>
@@ -77,18 +173,23 @@ var NewEvent = React.createClass({
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="startDate">When does it start?</label>
                                                 <Datetime
-                                                    dateFormat="dddd"
+                                                    dateFormat="L"
                                                     input={true}
                                                     inputProps={{id:"startDate"}}
-                                                    closeOnSelect= {true} />
+                                                    inputProps={{type:"datetime"}}
+                                                    closeOnSelect= {true}
+                                                    isValidDate={ valid } />
                                             </div>
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="endDate">When does it end?</label>
                                                 <Datetime
-                                                    dateFormat="dddd"
+                                                    dateFormat="L"
                                                     input={true}
                                                     inputProps={{id:"endDate"}}
-                                                    closeOnSelect= {true} />
+                                                    inputProps={{type:"datetime"}}
+                                                    closeOnSelect= {true}
+                                                    isValidDate={ valid } />
+                                                    <p id="dateVal"><small>Please enter an end date and start date above.</small></p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -101,6 +202,7 @@ var NewEvent = React.createClass({
                                                     onlyUnique
                                                     />
                                                 </span>
+                                                <p id="guestList2"><small>Who's coming?</small></p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -110,11 +212,12 @@ var NewEvent = React.createClass({
                                                 <Geosuggest
                                                     id="eventLocation"
                                                     className="form-control"
-                                                    placeholder="e.g Ibiza" />
+                                                    placeholder="e.g Winterfell" />
+                                            <p id="eventLocationVal"><small>Where will the event be held?</small></p>
                                             </div>
                                         </div>
-                                        <label htmlFor="eventInfo">ADDITIONAL INFORMATION<small><em> ( for your guests )</em></small></label>
-                                        <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring food, tents and a sense of humour."></textarea>
+                                        <label htmlFor="eventInfo">ADDITIONAL INFORMATION<small><em> ( optional )</em></small></label>
+                                        <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring sword, spears and giants."></textarea>
                                         <div className="row">
                                             <div className="col-md-4 col-md-offset-4">
                                                 <button className="btn btn-danger btn-block btn-lg btn-fill" onClick={this.handleClick}>Organize</button>

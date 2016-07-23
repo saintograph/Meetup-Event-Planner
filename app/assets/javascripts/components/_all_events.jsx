@@ -6,12 +6,13 @@ var AllEvents = React.createClass({
                <div key={event.id} className="mainList">
                     <div>
                         <h4 className="listSub">{event.title}</h4>
-                        <p><small>{event.address}</small></p>
+                        <p>Hosted by: {event.host_name}</p>
+                        <p><small>Location: {event.address}</small></p>
                     </div>
                         <p><strong>Start:</strong> {event.start_date}</p>
-                        <p>End: {event.end_date}</p>
+                        <p><strong>End:</strong> {event.end_date}</p>
                         <p>Guests: {event.guests}</p>
-                        <p>Agenda: {event.agenda}</p>
+                        <p>Additional information: {event.agenda}</p>
                </div>
            ) 
         });

@@ -10,11 +10,11 @@
                             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"register-form", html: {novalidate: true}) do |f| %>    
                                 
                                 <%= f.label :name, for: "inputName" %>
-                                <%= f.email_field :name, id: "inputName", autofocus: true, class: "form-control", placeholder: "John Doe" %>
+                                <%= f.email_field :name, id: "inputName", autocomplete: "on",autofocus: true, class: "form-control", placeholder: "John Doe" %>
                                 <p id="testName"><small>Howdy!</small></p>
                                   
                                 <%= f.label :email, for: "inputEmail" %>
-                                <%= f.email_field :email, id: "inputEmail", class: "form-control", placeholder: "john@evejet.com" %>
+                                <%= f.email_field :email, id: "inputEmail", autocomplete: "email",class: "form-control", placeholder: "john@evejet.com" %>
                                 <p id="testEmail"><small>Pretty please?</small></p>
                                 
                                 <%= f.label :password, for: "inputPassword" %>
