@@ -1,15 +1,15 @@
 {
   "name": "evejet",
   "devDependencies": {
-    "browserify": "13.0.1",
-    "browserify-incremental": "3.1.1",
-    "reactify": "^1.1.1",
-    "react": "15.2.1"
+    "react": "15.2.1",
+    "reactify": "^1.1.1"
   },
   "engines": {
     "node": ">= 0.10"
   },
   "dependencies": {
+    "browserify": "^13.0.1",
+    "browserify-incremental": "^3.1.1",
     "history": "^3.0.0",
     "react-bootstrap": "^0.29.5",
     "react-date-picker": "^5.3.23",
