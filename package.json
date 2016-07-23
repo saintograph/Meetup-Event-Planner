@@ -8,6 +8,7 @@
     "browserify": "^13.0.1",
     "browserify-incremental": "^3.1.1",
     "history": "^3.0.0",
+    "moment": "^2.14.1",
     "react": "^15.2.1",
     "react-bootstrap": "^0.29.5",
     "react-date-picker": "^5.3.23",
