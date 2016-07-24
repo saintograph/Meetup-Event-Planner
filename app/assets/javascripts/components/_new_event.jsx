@@ -85,8 +85,8 @@ var NewEvent = React.createClass({
         
         {/* date validations */}
         $("input#endDate").blur(function(){
-            var start_date = new Date(document.getElementById('startDate').value);
-            var end_date = new Date(document.getElementById('endDate').value);
+            var start_date = new Date($('startDate').val());
+            var end_date = new Date($('endDate').val());
             var test = document.getElementById("dateVal");
             console.log(start_date);
             console.log(end_date);
@@ -151,7 +151,7 @@ var NewEvent = React.createClass({
                                             </div>
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventHost">Who's the host?</label>
-                                                <input type="text" name="fname" autoComplete="on" className="form-control" id="eventHost" placeholder="e.g Ramsay Bolton" required/>
+                                                <input type="text" autoComplete="on" className="form-control" id="eventHost" placeholder="e.g Ramsay Bolton" required/>
                                                 <p id="eventHostVal"><small>Who's hosting it?</small></p>
                                             </div>
                                         </div>
