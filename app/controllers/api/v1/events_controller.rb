@@ -10,7 +10,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def create
-    respond_with :api, :v1, Event.create(event_params) # .merge(user_id: current_user.id)
+    respond_with :api, :v1, Event.create(event_params.merge(user_id: current_user.id))
   end
 
   # PATCH/PUT /events/1
