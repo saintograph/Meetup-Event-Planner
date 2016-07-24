@@ -98,12 +98,6 @@ var NewEvent = React.createClass({
                 }   
             });
 
-            {/* make sure dates selected are not in the past */}
-            var yesterday = Datetime.moment().subtract(1,'day');
-            var valid = function( current ){
-                return current.isAfter( yesterday );
-            };
-            
             {/* guest list validations */}
             $("input#eventGuestList").blur(function(){
                 var guestList = $("#eventGuestList").text();
@@ -129,6 +123,11 @@ var NewEvent = React.createClass({
         
         {/* end validations */}
         
+        {/* make sure dates selected are not in the past */}
+        var yesterday = Datetime.moment().subtract(1,'day');
+        var valid = function( current ){
+            return current.isAfter( yesterday );
+        };        
         return (
             <div>
                 <div className="section landing-section">
