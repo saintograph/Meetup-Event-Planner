@@ -30,8 +30,8 @@ var NewEvent = React.createClass({
             data: { event: {
                 title: name, 
                 address: location, 
-                start_date: start_date, 
-                end_date: end_date, 
+                /* start_date: start_date, 
+                end_date: end_date,  */
                 agenda: add_info,
                 guests: guests,
                 host_name: hostName 
