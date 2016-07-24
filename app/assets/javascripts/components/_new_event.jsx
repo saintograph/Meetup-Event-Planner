@@ -98,8 +98,7 @@ var NewEvent = React.createClass({
                                                 <Datetime
                                                     dateFormat="L"
                                                     input={true}
-                                                    inputProps={{id:"startDate"}}
-                                                    inputProps={{type:"datetime"}}
+                                                    inputProps={{id:"startDate", type:"datetime"}}
                                                     closeOnSelect= {true}
                                                     isValidDate={ valid } />
                                             </div>
@@ -108,8 +107,7 @@ var NewEvent = React.createClass({
                                                 <Datetime
                                                     dateFormat="L"
                                                     input={true}
-                                                    inputProps={{id:"endDate"}}
-                                                    inputProps={{type:"datetime"}}
+                                                    inputProps={{id:"endDate", type:"datetime"}}
                                                     closeOnSelect= {true}
                                                     isValidDate={ valid } />
                                                     <p id="dateVal"><small>Please enter an end date and start date above.</small></p>
