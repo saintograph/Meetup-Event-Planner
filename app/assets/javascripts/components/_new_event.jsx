@@ -45,86 +45,87 @@ var NewEvent = React.createClass({
     },
     
     render() {
-        {/* Validations */}
-        {/* event name validation */}
-        $("input#eventName").blur(function(){
-            var inputEventName = document.getElementById('eventName').value;
-            var inputEventNameTest = /[a-zA-Z0-9]+/.test(inputEventName);
-            var inputEventNameCh = document.getElementById('eventNameVal');
-            if(inputEventNameTest == true) {
-                inputEventNameCh.innerHTML = '<small>' + inputEventName + " sounds like fun" + '</small>';
-            } else {
-                inputEventNameCh.innerHTML = '<small>' + "Please give your event a name" + '</small>';
-            }
-        });
+        $(document).ready(function(){
+            {/* Validations */}
+            {/* event name validation */}
+            $("input#eventName").blur(function(){
+                var inputEventName = document.getElementById('eventName').value;
+                var inputEventNameTest = /[a-zA-Z0-9]+/.test(inputEventName);
+                var inputEventNameCh = document.getElementById('eventNameVal');
+                if(inputEventNameTest == true) {
+                    inputEventNameCh.innerHTML = '<small>' + inputEventName + " sounds like fun" + '</small>';
+                } else {
+                    inputEventNameCh.innerHTML = '<small>' + "Please give your event a name" + '</small>';
+                }
+            });
+            
+            {/* event host validation */}
+            $("input#eventHost").blur(function(){
+                var inputEventHost = document.getElementById('eventHost').value;
+                var inputEventHostTest = /[a-zA-Z0-9]+/.test(inputEventHost);
+                var inputHostNameCh = document.getElementById('eventHostVal');
+                if(inputEventHostTest == true) {
+                    inputHostNameCh.innerHTML = '<small>' + "Does " + inputEventHost + " know any good jokes?" + '</small>';
+                } else {
+                    inputHostNameCh.innerHTML = '<small>' + "Please give your event a host" + '</small>';
+                }
+            });
+            
+            {/* event type validation */}
+            $("input#eventType").blur(function(){
+                var inputEventType = document.getElementById('eventType').value;
+                var inputEventTypeTest = /[a-zA-Z0-9]+/.test(inputEventType);
+                var inputTypeNameCh = document.getElementById('eventTypeVal');
+                if(inputEventTypeTest == true) {
+                    inputTypeNameCh.innerHTML = '<small>' + "A " + inputEventType.toLowerCase() + " it is!" + '</small>';
+                } else {
+                    inputTypeNameCh.innerHTML = '<small>' + "Please enter the type of event" + '</small>';
+                }
+            });
         
-        {/* event host validation */}
-        $("input#eventHost").blur(function(){
-            var inputEventHost = document.getElementById('eventHost').value;
-            var inputEventHostTest = /[a-zA-Z0-9]+/.test(inputEventHost);
-            var inputHostNameCh = document.getElementById('eventHostVal');
-            if(inputEventHostTest == true) {
-                inputHostNameCh.innerHTML = '<small>' + "Does " + inputEventHost + " know any good jokes?" + '</small>';
-            } else {
-                inputHostNameCh.innerHTML = '<small>' + "Please give your event a host" + '</small>';
-            }
-        });
-        
-        {/* event type validation */}
-        $("input#eventType").blur(function(){
-            var inputEventType = document.getElementById('eventType').value;
-            var inputEventTypeTest = /[a-zA-Z0-9]+/.test(inputEventType);
-            var inputTypeNameCh = document.getElementById('eventTypeVal');
-            if(inputEventTypeTest == true) {
-                inputTypeNameCh.innerHTML = '<small>' + "A " + inputEventType.toLowerCase() + " it is!" + '</small>';
-            } else {
-                inputTypeNameCh.innerHTML = '<small>' + "Please enter the type of event" + '</small>';
-            }
-        });
-    
-        
-        {/* date validations */}
-        $("input#endDate").blur(function(){
-            var start_date = new Date($('#startDate').val());
-            var end_date = new Date($('#endDate').val());
-            var test = document.getElementById("dateVal");
-            console.log(start_date);
-            console.log(end_date);
-            if(start_date < end_date){
-                test.innerHTML = "Thank you!"; 
-            } else {
-                test.innerHTML = "Please enter an end date after the start date"; 
-            }   
-        });
+            
+            {/* date validations */}
+            $("input#endDate").blur(function(){
+                var start_date = new Date($('#startDate').val());
+                var end_date = new Date($('#endDate').val());
+                var test = document.getElementById("dateVal");
+                console.log(start_date);
+                console.log(end_date);
+                if(start_date < end_date){
+                    test.innerHTML = "Thank you!"; 
+                } else {
+                    test.innerHTML = "Please enter an end date after the start date"; 
+                }   
+            });
 
-        {/* make sure dates selected are not in the past */}
-        var yesterday = Datetime.moment().subtract(1,'day');
-        var valid = function( current ){
-            return current.isAfter( yesterday );
-        };
-        
-        {/* guest list validations */}
-        $("input#eventGuestList").blur(function(){
-            var guestList = $("#eventGuestList").text();
-            var innerGuestList = document.getElementById("guestList2");
-            if(guestList == ""){
-                innerGuestList.innerHTML = "Please enter some guest names";
-            }
-        });
-        
-        
-        {/* location validations */}
-        $("input#eventLocation").blur(function(){
-            var inputEventLocation = document.getElementById('eventLocation').value;
-            var inputEventLocationTest = /[a-zA-Z0-9]+/.test(inputEventLocation);
-            var inputLocationCh = document.getElementById('eventLocationVal');
-            if(inputEventLocationTest == true) {
-                inputLocationCh.innerHTML = '<small>' + "Thank you!" + '</small>';
-            } else {
-                inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
-            }
-        });
-        
+            {/* make sure dates selected are not in the past */}
+            var yesterday = Datetime.moment().subtract(1,'day');
+            var valid = function( current ){
+                return current.isAfter( yesterday );
+            };
+            
+            {/* guest list validations */}
+            $("input#eventGuestList").blur(function(){
+                var guestList = $("#eventGuestList").text();
+                var innerGuestList = document.getElementById("guestList2");
+                if(guestList == ""){
+                    innerGuestList.innerHTML = "Please enter some guest names";
+                }
+            });
+            
+            
+            {/* location validations */}
+            $("input#eventLocation").blur(function(){
+                var inputEventLocation = document.getElementById('eventLocation').value;
+                var inputEventLocationTest = /[a-zA-Z0-9]+/.test(inputEventLocation);
+                var inputLocationCh = document.getElementById('eventLocationVal');
+                if(inputEventLocationTest == true) {
+                    inputLocationCh.innerHTML = '<small>' + "Thank you!" + '</small>';
+                } else {
+                    inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
+                }
+            });                              
+        }); 
         
         {/* end validations */}
         
