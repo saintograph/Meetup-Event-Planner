@@ -12,7 +12,9 @@
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://f67cf82ca6e14fe9c519a4f2c5ab3406baac6760.googledrive.com/host/0B58kgS5WGnGOaG9CbmFISUNiX2M/validate.js"></script>
     
     
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -30,7 +32,5 @@
       <%= yield %>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1632BmCc46P2zQixsPns5BgaMmsxezRs&libraries=places"></script>
-    <script src="https://f67cf82ca6e14fe9c519a4f2c5ab3406baac6760.googledrive.com/host/0B58kgS5WGnGOaG9CbmFISUNiX2M/validate.js"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
