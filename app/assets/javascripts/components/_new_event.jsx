@@ -25,7 +25,7 @@ var NewEvent = React.createClass({
         var hostName = document.getElementById('eventHost').value;
         
         $.ajax({
-            url: 'https://pure-fortress-81588.herokuapp.com/api/v1/events',
+            url: '/api/v1/events',
             type: 'POST',
             data: { event: {
                 title: name, 
