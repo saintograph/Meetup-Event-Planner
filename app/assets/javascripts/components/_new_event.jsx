@@ -36,7 +36,7 @@ var NewEvent = React.createClass({
                 guests: guests,
                 host_name: hostName, 
             }},
-            success: (response) => {
+            success: (event) => {
                 this.props.handleSubmit(event);
                 window.location.href = "https://pure-fortress-81588.herokuapp.com/";
             }        
