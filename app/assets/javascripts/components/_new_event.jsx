@@ -34,7 +34,7 @@ var NewEvent = React.createClass({
                 end_date: end_date, 
                 agenda: add_info,
                 guests: guests,
-                host_name: hostName, 
+                host_name: hostName 
             }},
             success: (event) => {
                 this.props.handleSubmit(event);
