@@ -25,7 +25,7 @@ var NewEvent = React.createClass({
         var hostName = document.getElementById('eventHost').value;
         
         $.ajax({
-            url: 'api/v1/events',
+            url: '/api/v1/events',
             type: 'POST',
             data: { event: {
                 title: name, 
@@ -34,7 +34,8 @@ var NewEvent = React.createClass({
                 end_date: end_date,
                 agenda: add_info,
                 guests: guests,
-                host_name: hostName 
+                host_name: hostName, 
+                user_id: "<%= current_user.id %>" 
             }},
             success: (event) => {
                 this.props.handleSubmit(event);
