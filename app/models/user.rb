@@ -11,7 +11,7 @@ class User < ApplicationRecord
   
   validate :password_complexity
   
-  has_many :events #, class_name: "Event", foreign_key: "organizer_id"
+  has_many :events, foreign_key: "user_id" #, class_name: "Event", foreign_key: "organizer_id"
   
   def password_complexity
     if password.present? and not password.match(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)
