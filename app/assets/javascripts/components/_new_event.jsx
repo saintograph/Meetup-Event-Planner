@@ -16,8 +16,8 @@ var NewEvent = React.createClass({
     handleClick() {
         
         var name = document.getElementById('eventName').value;
-        var start_date = document.getElementById('startDate').value;
-        var end_date = document.getElementById('endDate').value;
+        var start_date = $('#startDate').val();
+        var end_date = $('#endtDate').val();
         var location = document.getElementById('eventLocation').value;
         var add_info = document.getElementById('eventInfo').value;
         var foo = $("#eventGuestList").text();
@@ -85,8 +85,8 @@ var NewEvent = React.createClass({
         
         {/* date validations */}
         $("input#endDate").blur(function(){
-            var start_date = new Date($('startDate').val());
-            var end_date = new Date($('endDate').val());
+            var start_date = new Date($('#startDate').val());
+            var end_date = new Date($('#endDate').val());
             var test = document.getElementById("dateVal");
             console.log(start_date);
             console.log(end_date);
