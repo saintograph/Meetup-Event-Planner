@@ -17,7 +17,7 @@ var NewEvent = React.createClass({
         
         var name = document.getElementById('eventName').value;
         var start_date = $('#startDate').val();
-        var end_date = $('#endtDate').val();
+        var end_date = $('#endDate').val();
         var location = document.getElementById('eventLocation').value;
         var add_info = document.getElementById('eventInfo').value;
         var foo = $("#eventGuestList").text();
