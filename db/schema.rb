@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160723100325) do
     t.text     "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
     t.text     "guests"
     t.string   "host_name"
   end
