@@ -831,7 +831,7 @@ input.ct-red + span + label + span.switch-right {
 }
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-  background-color: #E3E3E3;
+  background-color: #fffcf5;
   color: #66615B;
   cursor: not-allowed;
 }

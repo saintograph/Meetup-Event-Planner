@@ -5,7 +5,7 @@ var App = React.createClass({
     }, 
     
     componentDidMount() { 
-        $.getJSON('https://pure-fortress-81588.herokuapp.com/api/v1/events.json', (response) => { this.setState({ events: response }) }); 
+        $.getJSON('http://localhost:3000/api/v1/events.json', (response) => { this.setState({ events: response }) }); 
     }, 
     
     handleSubmit(event) { 

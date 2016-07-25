@@ -1,28 +1,14 @@
-'use strict';
 var NewEvent = React.createClass({
-    
-    getInitialState: function(){
-      return {
-          tags: []
 
-      }  
-    },
-    
-    handleChange(tags) {
-        tags = tags.concat("/");
-        this.setState({tags})
-    },
-    
-      
     handleClick() {
         
         var name = document.getElementById('eventName').value;
-        var start_date = $('#startDate').val();
-        var end_date = $('#endDate').val();
         var location = document.getElementById('eventLocation').value;
         var add_info = document.getElementById('eventInfo').value;
-        var foo = $("#eventGuestList").text();
-        var guests = String(foo.split("/").join(", "));
+        var startDate = new Date($('#startDate').val());
+        var endDate = new Date($('#endDate').val());
+        var foo = $("#eventGuestList").val();
+        var guests = String(foo.split(",").join(", "));
         var hostName = document.getElementById('eventHost').value;
         
         $.ajax({
@@ -31,28 +17,21 @@ var NewEvent = React.createClass({
             data: { event: {
                 title: name, 
                 address: location, 
-                start_date: start_date, 
-                end_date: end_date,
                 agenda: add_info,
                 guests: guests,
-                host_name: hostName, 
-                user_id: "<%= current_user.id %>" 
+                host_name: hostName,
+                start_date: startDate,
+                end_date: endDate
             }},
             success: (event) => {
                 this.props.handleSubmit(event);
-                window.location.href = "https://pure-fortress-81588.herokuapp.com/";
+                window.location.href = "http://localhost:3000/";
             }        
         });
     },
     
     render() {
-        
-        {/* make sure dates selected are not in the past */}
-        var yesterday = Datetime.moment().subtract(1,'day');
-        var valid = function( current ){
-            return current.isAfter( yesterday );
-        };
-                
+  
         return (
             <div>
                 <div className="section landing-section">
@@ -67,7 +46,7 @@ var NewEvent = React.createClass({
                                 </div>
                                 <h2 className="text-center">Create an event</h2>
                                 {/* insert form here */}
-                                    <form className="contact-form">
+                                    <form className="contact-form" id="newEventForm">
                                         <div className="row">
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventName">Give your event a name :</label>
@@ -94,44 +73,33 @@ var NewEvent = React.createClass({
                                                 </datalist>
                                             </div>
                                         </div>
+                                        <label htmlFor="startDate">When does it start and end?</label>
                                         <div className="row">
-                                            <div className="col-md-12 col-xs-12">
-                                                <label htmlFor="startDate">When does it start?</label>
-                                                <Datetime
-                                                    dateFormat="L"
-                                                    input={true}
-                                                    inputProps={{id:"startDate", type:"datetime"}}
-                                                    closeOnSelect= {true}
-                                                    isValidDate={ valid } />
-                                            </div>
-                                            <div className="col-md-12 col-xs-12">
-                                                <label htmlFor="endDate">When does it end?</label>
-                                                <Datetime
-                                                    dateFormat="L"
-                                                    input={true}
-                                                    inputProps={{id:"endDate", type:"datetime"}}
-                                                    closeOnSelect= {true}
-                                                    isValidDate={ valid } />
-                                                    <p id="dateVal"><small>Please enter an end date and start date above.</small></p>
-                                            </div>
+                                                <div className="col-md-6">
+                                                    <p>Start Date/Time: </p>
+                                                    <input type="text" className="form-control" id="startDate" data-field="datetime" data-startendelem="#endDate" readOnly/>
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <p>End Date/Time : </p>
+                                                    <input type="text" className="form-control" id="endDate" data-field="datetime" data-startendelem="#startDate" readOnly/>
+                                                </div>
+                                                <div id="dtBox"></div>
+                                                <div className="col-md-12">
+                                                    <p id="dateVal"><small>Lets get it started!</small></p>
+                                                </div>    
                                         </div>
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventGuestList">Guest list</label>
-                                                <span id="eventGuestList">
-                                                <TagsInput 
-                                                    value={this.state.tags} 
-                                                    onChange={this.handleChange}
-                                                    onlyUnique
-                                                    />
-                                                </span>
-                                                <p id="guestList2"><small>Who's coming?</small></p>
+                                                <div className="form-control">
+                                                    <input type="text" id="eventGuestList" data-role="tagsinput"/>
+                                                </div>
+                                                <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma - ',')</small></p>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventLocation">Location</label>
-
                                                 <Geosuggest
                                                     id="eventLocation"
                                                     className="form-control"

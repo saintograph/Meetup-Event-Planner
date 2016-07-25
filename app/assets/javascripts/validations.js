@@ -1,6 +1,8 @@
 
 
 $(document).ready(function(){
+
+    
     $("input#inputName").blur(function(){
         var input2 = document.getElementById('inputName').value;
         var inputT = /[a-zA-Z0-9]+/.test(input2);
@@ -80,23 +82,66 @@ $(document).ready(function(){
             inputTypeNameCh.innerHTML = '<small>' + "Please enter the type of event" + '</small>';
         }
     });
-
     
-    {/* date validations */}
-    $("input#endDate").blur(function(){
-        var start_date = new Date($('#startDate').val());
-        var end_date = new Date($('#endDate').val());
-        var test = document.getElementById("dateVal");
-        console.log(start_date);
-        console.log(end_date);
-        if(start_date < end_date){
-            test.innerHTML = "Thank you!"; 
-        } else {
-            test.innerHTML = "Please enter an end date after the start date"; 
-        }   
+    
+    {/* Date/time validations */}
+    
+    var startDate = new Date($('#startDate').val());
+    var endDate = new Date($('#endDate').val());
+    $("#dtBox").DateTimePicker({
+        dateTimeFormat: "MM-dd-yyyy hh:mm:ss AA",
+        maxDateTime: moment(endDate).add(30, 'minutes').format("MM-D-YYYY hh:mm:ss A"),
+        minDateTime: moment(startDate).format("MM-D-YYYY hh:mm:ss A"),
+        animationDuration: 100
     });
-
+    
+    $("input#endDate").blur(function(){
+        var startDate = new Date($('#startDate').val());
+        var endDate = new Date($('#endDate').val());
+        var inputDateCh = document.getElementById('dateVal');
+        if(endDate == "Invalid Date") {
+            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+            console.log(startDate);
+            console.log(endDate);
+        } else if(startDate == "Invalid Date"){
+            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+        } else if (startDate > endDate) {
+            inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
+            console.log(startDate);
+            console.log(endDate); 
+        } else {
+            inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
+            console.log(startDate);
+            console.log(endDate);
+        }
+    });
+    
+        
+    $("input#startDate").blur(function(){
+        var startDate = new Date($('#startDate').val());
+        var endDate = new Date($('#endDate').val());
+        var now = new Date();
+        var inputDateCh = document.getElementById('dateVal');
+        if(endDate == "Invalid Date") {
+            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+            console.log(startDate);
+            console.log(endDate);
+        } else if(startDate == "Invalid Date"){
+            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+        } else if (startDate > endDate) {
+            inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
+            console.log(startDate);
+            console.log(endDate); 
+        } else {
+            inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
+            console.log(startDate);
+            console.log(endDate);
+        }
+    });
+    
     {/* guest list validations */}
+    
+            
     $("input#eventGuestList").blur(function(){
         var guestList = $("#eventGuestList").text();
         var innerGuestList = document.getElementById("guestList2");
@@ -117,6 +162,5 @@ $(document).ready(function(){
             inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
         }
     });
-    
     
 }); 

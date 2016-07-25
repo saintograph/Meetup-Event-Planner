@@ -13,14 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery-ui-1.10.4.custom.min
 //= require components
+//= require moment
 //= require validations
 //= require bootstrap
-//= require bootstrap-datepicker
-//= require bootstrap-select
-//= require ct-paper
-//= require ct-paper-checkbox
-//= require ct-paper-radio 
+//= require bootstrap-tagsinput
+//= require DateTimePicker
 //= require_tree .
 

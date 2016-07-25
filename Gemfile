@@ -53,6 +53,6 @@ gem 'browserify-rails'
 gem 'responders'
 gem 'devise'
 gem 'simple_form'
-
+gem 'momentjs-rails'
 gem 'rails_12factor', group: :production
 ruby "2.3.0"
