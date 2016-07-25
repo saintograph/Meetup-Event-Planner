@@ -1,5 +1,6 @@
+'use strict';
 var NewEvent = React.createClass({
-
+    
     getInitialState: function(){
       return {
           tags: []
@@ -50,7 +51,8 @@ var NewEvent = React.createClass({
         var yesterday = Datetime.moment().subtract(1,'day');
         var valid = function( current ){
             return current.isAfter( yesterday );
-        };        
+        };
+                
         return (
             <div>
                 <div className="section landing-section">
