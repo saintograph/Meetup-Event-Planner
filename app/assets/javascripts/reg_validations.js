@@ -4,7 +4,6 @@ function validate() {
     valid = valid && checkEmail(document.getElementById('inputEmail').value);
     valid = valid && checkPassword(document.getElementById('inputPassword').value);
     valid = valid && checkPasswordConfirm(document.getElementById('confirmPassword').value);
-    
     $("#register_button").attr("disabled", true);
     if (valid) {
         $("#register_button").attr("disabled", false);

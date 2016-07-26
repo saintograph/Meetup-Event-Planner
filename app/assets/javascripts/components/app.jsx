@@ -12,12 +12,11 @@ var App = React.createClass({
         var newState = this.state.events.concat(event); 
         this.setState({ events: newState }) 
     },
- 
+    
     render() {
         return (
 
               <div>
-                {/* <NavBar /> */}
                 <div className="wrapper">
                     <div className="profile-background"> 
                         <div className="filter-black"></div>  
@@ -52,8 +51,6 @@ var App = React.createClass({
                             </div>
                         </div>
                     </div>
-                    {/* this is a comment */}
-                    {/* {React.cloneElement(this.props.children, {  events: this.state.events })} */}
                     {React.cloneElement(
                         this.props.children, 
                         { handleSubmit: this.handleSubmit, 

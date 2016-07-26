@@ -1,7 +1,7 @@
 var NewEvent = React.createClass({
 
     handleClick() {
-        
+
         var name = document.getElementById('eventName').value;
         var location = document.getElementById('eventLocation').value;
         var add_info = document.getElementById('eventInfo').value;
@@ -10,13 +10,13 @@ var NewEvent = React.createClass({
         var foo = $("#eventGuestList").val();
         var guests = String(foo.split(" ").join(", "));
         var hostName = document.getElementById('eventHost').value;
-        
+
         $.ajax({
             url: '/api/v1/events',
             type: 'POST',
             data: { event: {
-                title: name, 
-                address: location, 
+                title: name,
+                address: location,
                 agenda: add_info,
                 guests: guests,
                 host_name: hostName,
@@ -26,12 +26,24 @@ var NewEvent = React.createClass({
             success: (event) => {
                 this.props.handleSubmit(event);
                 window.location.href = "http://localhost:3000/";
-            }        
+            }
         });
     },
     
+    validate() {
+        var valid = true;
+        valid = checkEventName(document.getElementById('eventName').value);
+        valid = valid && checkEventHost(document.getElementById('eventHost').value);
+        valid = valid && checkEventType(document.getElementById('eventType').value); 
+        $("#organize_button").attr("disabled", true);
+        if (valid) {
+            $("#organize_button").attr("disabled", false);
+        }
+    },
+    
+
     render() {
-  
+
         return (
             <div>
                 <div className="section landing-section">
@@ -50,19 +62,19 @@ var NewEvent = React.createClass({
                                         <div className="row">
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventName">Give your event a name :</label>
-                                                <input type="text" id="eventName" className="form-control" placeholder="e.g Battle of Winterfell" required autoFocus/>
+                                                <input type="text" id="eventName" className="form-control" placeholder="e.g Battle of Winterfell" onBlur={this.validate} required autoFocus/>
                                                 <p id="eventNameVal"><small>Give the event a fun name</small></p>
                                             </div>
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventHost">Who's the host?</label>
-                                                <input type="text" autoComplete="on" className="form-control" id="eventHost" placeholder="e.g Ramsay Bolton" required/>
+                                                <input type="text" autoComplete="on" className="form-control" id="eventHost" onBlur={this.validate} placeholder="e.g Ramsay Bolton" required/>
                                                 <p id="eventHostVal"><small>Who's hosting it?</small></p>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventType">Type of Event</label>
-                                                <input className="form-control" id="eventType" list="eventTypeList" placeholder="e.g Party, Meeting" required/>
+                                                <input className="form-control" id="eventType" list="eventTypeList" onBlur={this.validate} placeholder="e.g Party, Meeting" required/>
                                                 <p id="eventTypeVal"><small>What kind of event is it?</small></p>
                                                 <datalist id="eventTypeList">
                                                     <option value="Party"></option>
@@ -86,7 +98,7 @@ var NewEvent = React.createClass({
                                                 <div id="dtBox"></div>
                                                 <div className="col-md-12">
                                                     <p id="dateVal"><small>Lets get it started!</small></p>
-                                                </div>    
+                                                </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
@@ -111,7 +123,7 @@ var NewEvent = React.createClass({
                                         <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring sword, spears and giants."></textarea>
                                         <div className="row">
                                             <div className="col-md-4 col-md-offset-4">
-                                                <button className="btn btn-danger btn-block btn-lg btn-fill" onClick={this.handleClick}>Organize</button>
+                                                <button className="btn btn-danger btn-block btn-lg btn-fill" id="organize_button" disabled="disabled" onClick={this.handleClick}>Organize</button>
                                             </div>
                                         </div>
                                 </form>

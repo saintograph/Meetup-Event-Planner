@@ -36,5 +36,15 @@
           }
       }
     </script>
+    <script>
+      $("#dtBox").DateTimePicker({
+          dateTimeFormat: "MM/dd/yyyy, hh:mm AA",
+          dateSeparator: "/",
+          dateTimeSeparator: ", ",
+          maxDateTime: moment(endDate).add(30, 'minutes').format("MM/dd/yyyy, hh:mm AA"),
+          minDateTime: moment(startDate).format("MM/dd/yyyy, hh:mm AA"),
+          animationDuration: 100
+      });
+    </script>
   </body>
 </html>

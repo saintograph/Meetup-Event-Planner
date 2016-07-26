@@ -26,6 +26,10 @@
     margin: 0px;
 }
 
+#eventLocationVal {
+    margin-top: -15px;
+}
+
 .listSub {
     margin: 0px;
 }

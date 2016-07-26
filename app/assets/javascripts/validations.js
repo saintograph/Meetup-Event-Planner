@@ -1,59 +1,59 @@
 
-
-$(document).ready(function(){
    
-    // New event form validations 
+// New event form validations 
     
-    // event name validation 
-    $("input#eventName").blur(function(){
-        var inputEventName = document.getElementById('eventName').value;
-        var inputEventNameTest = /[a-zA-Z0-9]+/.test(inputEventName);
-        var inputEventNameCh = document.getElementById('eventNameVal');
-        if(inputEventNameTest == true) {
-            inputEventNameCh.innerHTML = '<small>' + inputEventName + " sounds like fun" + '</small>';
-        } else {
-            inputEventNameCh.innerHTML = '<small>' + "Please give your event a name" + '</small>';
-        }
-    });
+// event name validation 
+function checkEventName(obj) {
+    var result = true;
+    var inputEventNameTest = /[a-zA-Z0-9]+/.test(obj);
+    var inputEventNameCh = document.getElementById('eventNameVal');
+    if(inputEventNameTest == true) {
+        inputEventNameCh.innerHTML = '<small>' + obj + " sounds like fun" + '</small>';
+        return result = true;
+    } else {
+        inputEventNameCh.innerHTML = '<small>' + "Please give your event a name" + '</small>';
+        return result = false;
+    }
+}
+
     
-    // event host validation 
-    $("input#eventHost").blur(function(){
-        var inputEventHost = document.getElementById('eventHost').value;
-        var inputEventHostTest = /[a-zA-Z0-9]+/.test(inputEventHost);
-        var inputHostNameCh = document.getElementById('eventHostVal');
-        if(inputEventHostTest == true) {
-            inputHostNameCh.innerHTML = '<small>' + "Does " + inputEventHost + " know any good jokes?" + '</small>';
-        } else {
-            inputHostNameCh.innerHTML = '<small>' + "Please give your event a host" + '</small>';
-        }
-    });
+// event host validation 
+function checkEventHost(obj){
+    var result = true;
+    var inputEventHostTest = /[a-zA-Z0-9]+/.test(obj);
+    var inputHostNameCh = document.getElementById('eventHostVal');
+    if(inputEventHostTest == true) {
+        inputHostNameCh.innerHTML = '<small>' + "Does " + obj + " know any good jokes?" + '</small>';
+        return result = true;
+    } else {
+        inputHostNameCh.innerHTML = '<small>' + "Please give your event a host" + '</small>';
+        return result = false;
+    }
+};
     
-    // event type validation 
-    $("input#eventType").blur(function(){
-        var inputEventType = document.getElementById('eventType').value;
-        var inputEventTypeTest = /[a-zA-Z0-9]+/.test(inputEventType);
-        var inputTypeNameCh = document.getElementById('eventTypeVal');
-        if(inputEventTypeTest == true) {
-            inputTypeNameCh.innerHTML = '<small>' + "A " + inputEventType.toLowerCase() + " it is!" + '</small>';
-        } else {
-            inputTypeNameCh.innerHTML = '<small>' + "Please enter the type of event" + '</small>';
-        }
-    });
-    
+// event type validation 
+function  checkEventType(obj){
+    var result = true;
+    var inputEventTypeTest = /[a-zA-Z0-9]+/.test(obj);
+    var inputTypeNameCh = document.getElementById('eventTypeVal');
+    if(inputEventTypeTest == true) {
+        inputTypeNameCh.innerHTML = '<small>' + "A " + obj.toLowerCase() + " it is!" + '</small>';
+        return result = true;
+    } else {
+        inputTypeNameCh.innerHTML = '<small>' + "Please enter the type of event" + '</small>';
+        return result = false;
+    }
+};
+
+
+$(document).ready(function(){ 
     
     // Date/time validations 
     
     var startDate = new Date($('#startDate').val());
     var endDate = new Date($('#endDate').val());
-    $("#dtBox").DateTimePicker({
-        dateTimeFormat: "MM/dd/yyyy, hh:mm AA",
-        dateSeparator: "/",
-        dateTimeSeparator: ", ",
-        maxDateTime: moment(endDate).add(30, 'minutes').format("MM/dd/yyyy, hh:mm AA"),
-        minDateTime: moment(startDate).format("MM/dd/yyyy, hh:mm AA"),
-        animationDuration: 100
-    });
-    
+
+
     $("input#endDate").blur(function(){
         var startDate = new Date($('#startDate').val());
         var endDate = new Date($('#endDate').val());
@@ -98,14 +98,10 @@ $(document).ready(function(){
         }
     });
     
-    // guest list validations 
-    
-    // See main page "application.html.erb" for script         
-    
-    // location validations 
-    $("input#eventLocation").blur(function(){
-        var inputEventLocation = document.getElementById('eventLocation').value;
-        var inputEventLocationTest = /[a-zA-Z0-9]+/.test(inputEventLocation);
+    // location validations     
+    $('input#eventLocation').blur(function(){
+        var location = document.getElementById('eventLocation').value;
+        var inputEventLocationTest = /[a-zA-Z0-9]+/.test(location);
         var inputLocationCh = document.getElementById('eventLocationVal');
         if(inputEventLocationTest == true) {
             inputLocationCh.innerHTML = '<small>' + "Thank you!" + '</small>';
@@ -113,6 +109,12 @@ $(document).ready(function(){
             inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
         }
     });
+    
+    // guest list validations 
+    
+    // See main page "application.html.erb" for script         
+    
+
     
     //* End new event form validations *
 }); 
