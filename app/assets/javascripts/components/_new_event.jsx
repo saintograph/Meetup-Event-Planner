@@ -104,7 +104,7 @@ var NewEvent = React.createClass({
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventGuestList">Guest list</label>
                                                 <div className="form-control">
-                                                    <input type="text" id="eventGuestList" className="form-control" data-role="tagsinput"/>
+                                                    <input type="text" id="eventGuestList" data-role="tagsinput"/>
                                                 </div>
                                                 <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma ',' after each name)</small></p>
                                             </div>
