@@ -37,6 +37,8 @@
       }
     </script>
     <script>
+      var startDate = new Date($('#startDate').val());
+      var endDate = new Date($('#endDate').val());
       $("#dtBox").DateTimePicker({
           dateTimeFormat: "MM/dd/yyyy, hh:mm AA",
           dateSeparator: "/",
