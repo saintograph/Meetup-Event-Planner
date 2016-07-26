@@ -8,7 +8,7 @@ var NewEvent = React.createClass({
         var startDate = new Date($('#startDate').val());
         var endDate = new Date($('#endDate').val());
         var foo = $("#eventGuestList").val();
-        var guests = String(foo.split(",").join(", "));
+        var guests = String(foo.split(" ").join(", "));
         var hostName = document.getElementById('eventHost').value;
         
         $.ajax({
@@ -76,12 +76,12 @@ var NewEvent = React.createClass({
                                         <label htmlFor="startDate">When does it start and end?</label>
                                         <div className="row">
                                                 <div className="col-md-6">
-                                                    <p>Start Date/Time: </p>
-                                                    <input type="text" className="form-control" id="startDate" data-field="datetime" data-startendelem="#endDate" readOnly/>
+                                                    <label htmlFor="startDate">Start Date/Time: </label>
+                                                    <input type="datetime" className="form-control" id="startDate" data-field="datetime" data-startendelem="#endDate" readOnly=""/>
                                                 </div>
                                                 <div className="col-md-6">
-                                                    <p>End Date/Time : </p>
-                                                    <input type="text" className="form-control" id="endDate" data-field="datetime" data-startendelem="#startDate" readOnly/>
+                                                    <label htmlFor="endDate">End Date/Time : </label>
+                                                    <input type="datetime" className="form-control" id="endDate" data-field="datetime" data-startendelem="#startDate" />
                                                 </div>
                                                 <div id="dtBox"></div>
                                                 <div className="col-md-12">
@@ -92,9 +92,9 @@ var NewEvent = React.createClass({
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventGuestList">Guest list</label>
                                                 <div className="form-control">
-                                                    <input type="text" id="eventGuestList" data-role="tagsinput"/>
+                                                    <input type="text" id="eventGuestList" className="form-control" data-role="tagsinput"/>
                                                 </div>
-                                                <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma - ',')</small></p>
+                                                <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma ',' after each name)</small></p>
                                             </div>
                                         </div>
                                         <div className="row">

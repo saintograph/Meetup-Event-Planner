@@ -27,5 +27,14 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1632BmCc46P2zQixsPns5BgaMmsxezRs&libraries=places"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>    
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script>
+      function checkGuest() {
+          var guestList = $(".bootstrap-tagsinput").text();
+          var innerGuestList = document.getElementById("guestList2");
+          if(guestList == ""){
+              innerGuestList.innerHTML = "<small>" + "Please enter some guest names" + "<small>";
+          }
+      }
+    </script>
   </body>
 </html>

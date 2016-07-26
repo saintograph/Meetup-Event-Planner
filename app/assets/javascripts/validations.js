@@ -46,9 +46,11 @@ $(document).ready(function(){
     var startDate = new Date($('#startDate').val());
     var endDate = new Date($('#endDate').val());
     $("#dtBox").DateTimePicker({
-        dateTimeFormat: "MM-dd-yyyy hh:mm:ss AA",
-        maxDateTime: moment(endDate).add(30, 'minutes').format("MM-D-YYYY hh:mm:ss A"),
-        minDateTime: moment(startDate).format("MM-D-YYYY hh:mm:ss A"),
+        dateTimeFormat: "MM/dd/yyyy, hh:mm AA",
+        dateSeparator: "/",
+        dateTimeSeparator: ", ",
+        maxDateTime: moment(endDate).add(30, 'minutes').format("MM/dd/yyyy, hh:mm AA"),
+        minDateTime: moment(startDate).format("MM/dd/yyyy, hh:mm AA"),
         animationDuration: 100
     });
     
@@ -98,15 +100,7 @@ $(document).ready(function(){
     
     // guest list validations 
     
-            
-    $("input#eventGuestList").blur(function(){
-        var guestList = $("#eventGuestList").text();
-        var innerGuestList = document.getElementById("guestList2");
-        if(guestList == ""){
-            innerGuestList.innerHTML = "Please enter some guest names";
-        }
-    });
-    
+    // See main page "application.html.erb" for script         
     
     // location validations 
     $("input#eventLocation").blur(function(){

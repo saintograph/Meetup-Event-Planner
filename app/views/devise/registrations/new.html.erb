@@ -24,7 +24,7 @@
                                 <%= f.password_field :password, id: "inputPassword", autocomplete: "off", class: "form-control", placeholder: "••••••••", onblur: "validate()" %>
                                 <p id="testPassword"><small>Secure password example: <em>X%LlVcFg7B1%</em></small></p>
 
-                                <%= f.label :password_confirmation %><br />
+                                <%= f.label :password_confirmation, for: "confirmPassword" %><br />
                                 <%= f.password_field :password_confirmation, id: "confirmPassword", autocomplete: "off", class: "form-control",  placeholder: "••••••••", onblur: "validate()" %>
                                 <p id="confirmPassword2"><small>Confirm your password</small></p>
                                 
