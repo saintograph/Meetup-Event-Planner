@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require components
 //= require moment
+//= require reg_validations
 //= require validations
 //= require bootstrap
 //= require bootstrap-tagsinput

@@ -10,11 +10,11 @@
                             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"register-form", html: {novalidate: true}) do |f| %>    
                                 
                                 <%= f.label :name, for: "inputName" %>
-                                <%= f.email_field :name, id: "inputName", autocomplete: "on",autofocus: true, class: "form-control", placeholder: "John Doe" %>
+                                <%= f.email_field :name, id: "inputName", autocomplete: "on",autofocus: true, class: "form-control", placeholder: "Jon Snow" %>
                                 <p id="testName"><small>Howdy!</small></p>
                                   
                                 <%= f.label :email, for: "inputEmail" %>
-                                <%= f.email_field :email, id: "inputEmail", autocomplete: "email",class: "form-control", placeholder: "john@evejet.com" %>
+                                <%= f.email_field :email, id: "inputEmail", autocomplete: "email",class: "form-control", placeholder: "jon@example.com.com" %>
                                 <p id="testEmail"><small>Pretty please?</small></p>
                                 
                                 <%= f.label :password, for: "inputPassword" %>
@@ -38,16 +38,14 @@
                                     <option value="Khal"></option>
                                 </datalist>
                                 
-                                <%= f.submit "Register", class: "btn btn-danger btn-block" %>
+                                <%= f.submit "Register", class: "btn btn-fill btn-primary btn-block", disabled: "disabled", id: "register_button" %>
 
                             <% end %>
 
                             <div class="forgot">
-                                <!--<a href="#" class="btn btn-simple btn-danger" style="font-size: 1em;">Forgot password?</a>-->
                                 <span  class="btn btn-simple btn-default">
                                   <%= render "devise/shared/links" %>
                                 </span>
-                                <!-- <a href="event_form.html" class="btn btn-simple btn-default" style="font-size: 1em; margin-top: 5px;">I have an account</a> -->
                             </div>
                         </div>
                     </div>
