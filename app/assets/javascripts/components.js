@@ -12,25 +12,23 @@ IndexRoute = ReactRouter.IndexRoute;
 Link = ReactRouter.Link;
 hashHistory = ReactRouter.hashHistory;
 browserHistory = ReactRouter.browserHistory;
-// moment = require('moment');
+//  App = require("./components/app.js.jsx");
+// Footer = require('./components/_footer.js.jsx');
+// NewEvent = require('./components/_new_event.js.jsx');
+// AllEvents = require('./components/_all_events.js.jsx');
+// NavBar = require('./components/_navbar.js.jsx');
 Geosuggest = require('react-geosuggest').default;
+// moment = require('moment');
 
 
-App = require('./components/app.jsx');
-Main = require('./components/main.jsx');
-Footer = require('./components/_footer.jsx');
-NewEvent = require('./components/_new_event.jsx');
-AllEvents = require('./components/_all_events.jsx');
-NavBar = require('./components/_navbar.jsx');
-
-
+// 12345678910
 const app = document.getElementById('app');
 
 var routes = (
     <Router history={hashHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute component={AllEvents}></IndexRoute>
-            <Route path="new" component={NewEvent}></Route>
+        <Route path="/" component={"./components/app.js.jsx"}>
+            <IndexRoute component={'./components/_all_events.js.jsx'}></IndexRoute>
+            <Route path="new" component={'./components/_new_event.js.jsx'}></Route>
         </Route>
     </Router>
 );

@@ -1,7 +1,6 @@
 var AllEvents = React.createClass({
-    
     render() {
-        var events = this.props.events.map((event) => {
+        var events = this.props.events.map(function(event) {
            return (
                <div key={event.id} className="mainList">
                     <div>

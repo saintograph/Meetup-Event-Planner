@@ -1,6 +1,6 @@
 var NewEvent = React.createClass({
 
-    handleClick() {
+    handleclick() {
 
         var name = document.getElementById('eventName').value;
         var location = document.getElementById('eventLocation').value;
@@ -23,7 +23,7 @@ var NewEvent = React.createClass({
                 start_date: startDate,
                 end_date: endDate
             }},
-            success: (event) => {
+            success: function(event) {
                 this.props.handleSubmit(event);
                 window.location.href = "https://pure-fortress-81588.herokuapp.com/";
             }
@@ -80,11 +80,11 @@ var NewEvent = React.createClass({
                                                 <label htmlFor="startDate">When does it start and end?</label>
                                                 <div className="row">
                                                         <div className="col-md-6">
-                                                            <label htmlFor="startDate">Start Date/Time: </label>
+                                                            <label htmlFor="startDate">Start Date/Time </label>
                                                             <input type="datetime-local" className="form-control" id="startDate" data-field="datetime" required />
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <label htmlFor="endDate">End Date/Time : </label>
+                                                            <label htmlFor="endDate">End Date/Time </label>
                                                             <input type="datetime-local" className="form-control" id="endDate" data-field="datetime" required/>
                                                         </div>
                                                         <div id="dtBox"></div>

@@ -1,6 +1,8 @@
 {
   "name": "evejet",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0"
+  },
   "engines": {
     "node": ">= 0.10"
   },

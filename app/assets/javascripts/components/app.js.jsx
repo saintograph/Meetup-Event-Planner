@@ -5,7 +5,7 @@ var App = React.createClass({
     }, 
     
     componentDidMount() { 
-        $.getJSON('https://pure-fortress-81588.herokuapp.com/api/v1/events.json', (response) => { this.setState({ events: response }) }); 
+        $.getJSON('https://pure-fortress-81588.herokuapp.com/api/v1/events.json', function(response) { this.setState({ events: response }) }); 
     }, 
     
     handleSubmit(event) { 
@@ -51,11 +51,7 @@ var App = React.createClass({
                             </div>
                         </div>
                     </div>
-                    {React.cloneElement(
-                        this.props.children, 
-                        { handleSubmit: this.handleSubmit, 
-                         events: this.state.events} 
-                    )}
+                    { React.cloneElement(this.props.children, { handleSubmit: this.handleSubmit, events: this.state.events}) }
                 </div>
                 <Footer />
             </div>
