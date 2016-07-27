@@ -25,7 +25,7 @@ var NewEvent = React.createClass({
             }},
             success: (event) => {
                 this.props.handleSubmit(event);
-                window.location.href = "http://localhost:3000/";
+                window.location.href = "https://pure-fortress-81588.herokuapp.com/";
             }
         });
     },
