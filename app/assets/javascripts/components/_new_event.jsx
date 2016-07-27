@@ -25,23 +25,27 @@ var NewEvent = React.createClass({
             }},
             success: (event) => {
                 this.props.handleSubmit(event);
-                window.location.href = "https://pure-fortress-81588.herokuapp.com/";
+                window.location.href = "http://localhost:3000/";
             }
         });
     },
     
-    validate() {
+    validateJS() {
         var valid = true;
-        valid = checkEventName(document.getElementById('eventName').value);
-        valid = valid && checkEventHost(document.getElementById('eventHost').value);
-        valid = valid && checkEventType(document.getElementById('eventType').value); 
-        $("#organize_button").attr("disabled", true);
-        if (valid) {
-            $("#organize_button").attr("disabled", false);
-        }
-    },
-    
 
+        valid = valid && checkEventName(document.getElementById('eventName').value);
+        valid = valid && checkEventHost(document.getElementById('eventHost').value);
+        valid = valid && checkEventType(document.getElementById('eventType').value);
+        valid = valid && checkEventDate();
+        valid = valid && checkGuest();
+        
+        $("button#organize_button").prop("disabled", true);
+        if (valid) {
+            $("button#organize_button").prop("disabled", false);
+        }
+    }, 
+
+    
     render() {
 
         return (
@@ -57,24 +61,52 @@ var NewEvent = React.createClass({
                                     </div>
                                 </div>
                                 <h2 className="text-center">Create an event</h2>
-                                {/* insert form here */}
+
                                     <form className="contact-form" id="newEventForm">
                                         <div className="row">
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventName">Give your event a name :</label>
-                                                <input type="text" id="eventName" className="form-control" placeholder="e.g Battle of Winterfell" onBlur={this.validate} required autoFocus/>
+                                                <input type="text" id="eventName" className="form-control" placeholder="e.g Battle of Winterfell" onBlur={this.validateJS} required autoFocus/>
                                                 <p id="eventNameVal"><small>Give the event a fun name</small></p>
                                             </div>
                                             <div className="col-md-6 col-xs-12">
                                                 <label htmlFor="eventHost">Who's the host?</label>
-                                                <input type="text" autoComplete="on" className="form-control" id="eventHost" onBlur={this.validate} placeholder="e.g Ramsay Bolton" required/>
+                                                <input type="text" autoComplete="on" className="form-control" id="eventHost" onBlur={this.validateJS} placeholder="e.g Ramsay Bolton" required/>
                                                 <p id="eventHostVal"><small>Who's hosting it?</small></p>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
+                                                <label htmlFor="startDate">When does it start and end?</label>
+                                                <div className="row">
+                                                        <div className="col-md-6">
+                                                            <label htmlFor="startDate">Start Date/Time: </label>
+                                                            <input type="datetime-local" className="form-control" id="startDate" data-field="datetime" required />
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <label htmlFor="endDate">End Date/Time : </label>
+                                                            <input type="datetime-local" className="form-control" id="endDate" data-field="datetime" required/>
+                                                        </div>
+                                                        <div id="dtBox"></div>
+                                                        <div className="col-md-12">
+                                                            <p id="dateVal"><small>Lets get it started!</small></p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-12 col-xs-12">
+                                                <label htmlFor="eventGuestList">Guest list</label>
+                                                <div className="form-control">
+                                                    <input type="text" id="eventGuestList" data-role="tagsinput" required/>
+                                                </div>
+                                                <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma ',' after each name)</small></p>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventType">Type of Event</label>
-                                                <input className="form-control" id="eventType" list="eventTypeList" onBlur={this.validate} placeholder="e.g Party, Meeting" required/>
+                                                <input className="form-control" id="eventType" list="eventTypeList" onBlur={this.validateJS} placeholder="e.g Party, Meeting" required/>
                                                 <p id="eventTypeVal"><small>What kind of event is it?</small></p>
                                                 <datalist id="eventTypeList">
                                                     <option value="Party"></option>
@@ -85,35 +117,12 @@ var NewEvent = React.createClass({
                                                 </datalist>
                                             </div>
                                         </div>
-                                        <label htmlFor="startDate">When does it start and end?</label>
-                                        <div className="row">
-                                                <div className="col-md-6">
-                                                    <label htmlFor="startDate">Start Date/Time: </label>
-                                                    <input type="datetime" className="form-control" id="startDate" data-field="datetime" data-startendelem="#endDate" readOnly=""/>
-                                                </div>
-                                                <div className="col-md-6">
-                                                    <label htmlFor="endDate">End Date/Time : </label>
-                                                    <input type="datetime" className="form-control" id="endDate" data-field="datetime" data-startendelem="#startDate" />
-                                                </div>
-                                                <div id="dtBox"></div>
-                                                <div className="col-md-12">
-                                                    <p id="dateVal"><small>Lets get it started!</small></p>
-                                                </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-12 col-xs-12">
-                                                <label htmlFor="eventGuestList">Guest list</label>
-                                                <div className="form-control">
-                                                    <input type="text" id="eventGuestList" data-role="tagsinput"/>
-                                                </div>
-                                                <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma ',' after each name)</small></p>
-                                            </div>
-                                        </div>
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventLocation">Location</label>
                                                 <Geosuggest
                                                     id="eventLocation"
+                                                    required="required"
                                                     className="form-control"
                                                     placeholder="e.g Winterfell" />
                                             <p id="eventLocationVal"><small>Where will the event be held?</small></p>
@@ -123,11 +132,11 @@ var NewEvent = React.createClass({
                                         <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring sword, spears and giants."></textarea>
                                         <div className="row">
                                             <div className="col-md-4 col-md-offset-4">
-                                                <button className="btn btn-danger btn-block btn-lg btn-fill" id="organize_button" disabled="disabled" onClick={this.handleClick}>Organize</button>
+                                                <button className="btn btn-danger btn-block btn-lg btn-fill" id="organize_button" onClick={this.handleClick} >Organize</button>
                                             </div>
                                         </div>
                                 </form>
-                                {/* end form here */}
+
                             </div>
                         </div>
                     </div>

@@ -1398,7 +1398,7 @@ $.cf = {
 				sDTPickerComp += "<div class='dtpicker-compOutline " + sColumnClass + "'>";
 				sDTPickerComp += "<div class='dtpicker-comp " + sFieldName + "'>";
 				sDTPickerComp += "<a class='dtpicker-compButton increment'>" + oDTP.settings.incrementButtonContent + "</a>";
-				sDTPickerComp += "<input type='text' class='dtpicker-compValue'></input>";
+				sDTPickerComp += "<input type='text' onBlur={validateJS} class='dtpicker-compValue'></input>";
 				sDTPickerComp += "<a class='dtpicker-compButton decrement'>" + oDTP.settings.decrementButtonContent + "</a>";
 				if(oDTP.settings.labels)
 					sDTPickerComp += "<div class='dtpicker-label'>" + oDTP.settings.labels[sFieldName] + "</div>";

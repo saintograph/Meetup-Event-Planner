@@ -10,22 +10,22 @@
                             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"register-form", html: {novalidate: true}) do |f| %>    
                                 
                                 <%= f.label :name, for: "inputName" %>
-                                <%= f.email_field :name, id: "inputName", autocomplete: "on",autofocus: true, class: "form-control", placeholder: "Jon Snow", onblur: "validate()" %>
+                                <%= f.email_field :name, id: "inputName", autocomplete: "on",autofocus: true, class: "form-control", placeholder: "Jon Snow", onblur: "validate()", required: true %>
                                 <p id="testName"><small>Howdy!</small></p>
                                   
                                 <%= f.label :email, for: "inputEmail" %>
-                                <%= f.email_field :email, id: "inputEmail", autocomplete: "email",class: "form-control", placeholder: "jon@example.com.com", onblur: "validate()" %>
+                                <%= f.email_field :email, id: "inputEmail", autocomplete: "email",class: "form-control", placeholder: "jon@example.com.com", onblur: "validate()", required: true %>
                                 <p id="testEmail"><small>Pretty please?</small></p>
                                 
                                 <%= f.label :password, for: "inputPassword" %>
                                 <% if @minimum_password_length %>
                                 <small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
                                 <% end %><br />
-                                <%= f.password_field :password, id: "inputPassword", autocomplete: "off", class: "form-control", placeholder: "••••••••", onblur: "validate()" %>
+                                <%= f.password_field :password, id: "inputPassword", autocomplete: "off", class: "form-control", placeholder: "••••••••", onblur: "validate()", required: true %>
                                 <p id="testPassword"><small>Secure password example: <em>X%LlVcFg7B1%</em></small></p>
 
                                 <%= f.label :password_confirmation, for: "confirmPassword" %><br />
-                                <%= f.password_field :password_confirmation, id: "confirmPassword", autocomplete: "off", class: "form-control",  placeholder: "••••••••", onblur: "validate()" %>
+                                <%= f.password_field :password_confirmation, id: "confirmPassword", autocomplete: "off", class: "form-control",  placeholder: "••••••••", onblur: "validate()", required: true %>
                                 <p id="confirmPassword2"><small>Confirm your password</small></p>
                                 
                                 <%= f.label :title, for: "inputTitle" %>

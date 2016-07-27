@@ -25,29 +25,85 @@
       <%= yield %>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1632BmCc46P2zQixsPns5BgaMmsxezRs&libraries=places"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>    
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
     <script>
-      function checkGuest() {
-          var guestList = $(".bootstrap-tagsinput").text();
-          var innerGuestList = document.getElementById("guestList2");
-          if(guestList == ""){
-              innerGuestList.innerHTML = "<small>" + "Please enter some guest names" + "<small>";
-          }
-      }
-    </script>
-    <script>
+
       var startDate = new Date($('#startDate').val());
       var endDate = new Date($('#endDate').val());
+      var now = new Date();
       $("#dtBox").DateTimePicker({
-          dateTimeFormat: "MM/dd/yyyy, hh:mm AA",
-          dateSeparator: "/",
-          dateTimeSeparator: ", ",
-          maxDateTime: moment(endDate).add(30, 'minutes').format("MM/dd/yyyy, hh:mm AA"),
-          minDateTime: moment(startDate).format("MM/dd/yyyy, hh:mm AA"),
+          dateTimeFormat: "yyyy-MM-ddTHH:mm",
+          dateSeparator: "-",
+          dateTimeSeparator: "T",
+          maxDateTime: moment(endDate).add(30, 'minutes').format("yyyy-MM-ddTHH:mm"),
+          minDateTime: moment(startDate).format("yyyy-MM-ddTHH:mm"),
           animationDuration: 100
       });
+
+
+      $(document).ready(function(){ 
+
+        $('input#guestTags').blur(function(){
+            var guestTags2 = $('.bootstrap-tagsinput').text();
+            var guestListVal = document.getElementById('guestList2');
+            if(guestTags2 == "") {
+                guestListVal.innerHTML = '<small>' + "Aww, you need a hug." + '</small>';
+            } else {
+                guestListVal.innerHTML = '<small>' + "Thank you!" + '</small>';
+            }
+            
+        });
+          
+        $("input#startDate").blur(function(){
+            var startDate = new Date($('#startDate').val());
+            var endDate = new Date($('#endDate').val());
+            var now = new Date();
+            var inputDateCh = document.getElementById('dateVal');
+            if(startDate < now) {
+                inputDateCh.innerHTML = '<small>' + "Dates can't be in the past" + "</small>";
+            } else if(endDate == "Invalid Date") {
+                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+            } else if(startDate == "Invalid Date"){
+                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+            } else if (startDate > endDate) {
+                inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
+            } else {
+                inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
+            }
+        });
+          
+        $("input#endDate").blur(function(){
+            var startDate = new Date($('#startDate').val());
+            var endDate = new Date($('#endDate').val());
+            var now = new Date();
+            var inputDateCh = document.getElementById('dateVal');
+            if (startDate > endDate) {
+                inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
+            } else if(endDate == "Invalid Date") {
+                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+            } else if(startDate == "Invalid Date"){
+                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
+            } else {
+                inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
+            }
+        });
+
+          
+        // location validations     
+        $('input#eventLocation').blur(function(){
+            var location = document.getElementById('eventLocation').value;
+            var inputEventLocationTest = /[a-zA-Z0-9]+/.test(location);
+            var inputLocationCh = document.getElementById('eventLocationVal');
+            if(inputEventLocationTest == true) {
+                inputLocationCh.innerHTML = '<small>' + "Thank you!" + '</small>';
+            } else {
+                inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
+            }
+        });
+      });     
+
     </script>
+
   </body>
 </html>

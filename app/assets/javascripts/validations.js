@@ -1,7 +1,6 @@
-
-   
+  
 // New event form validations 
-    
+  
 // event name validation 
 function checkEventName(obj) {
     var result = true;
@@ -32,7 +31,7 @@ function checkEventHost(obj){
 };
     
 // event type validation 
-function  checkEventType(obj){
+function checkEventType(obj){
     var result = true;
     var inputEventTypeTest = /[a-zA-Z0-9]+/.test(obj);
     var inputTypeNameCh = document.getElementById('eventTypeVal');
@@ -45,76 +44,39 @@ function  checkEventType(obj){
     }
 };
 
+function checkEventDate(){
+    var result = true;
+    var dateA = new Date($('#startDate').val());
+    var dateB = new Date($('#endDate').val());
+    var dateNow = new Date(); 
+    if(dateA < now) {
+      return result =  false;
+    } else if (dateB < now) {
+      return result = false;
+    } else if (dateA == "Invalid Date") {
+      return result = false;  
+    } else if (dateB == "Invalid Date") {
+      return result = false;
+    } else if (dateA > dateB) {
+      return result = false;
+    } else {
+      return result = true;
+    }
+}
 
-$(document).ready(function(){ 
-    
-    // Date/time validations 
-    
-    var startDate = new Date($('#startDate').val());
-    var endDate = new Date($('#endDate').val());
+// Guest input validations
+
+function checkGuest() {
+    var result = true;
+    guestNames = $('.bootstrap-tagsinput').text();
+    if (guestNames == "") {
+        return result = false;
+    } else if (guestNames == " ") {
+        return result = false;
+    } else {
+        return result = true;        
+    }
+}
 
 
-    $("input#endDate").blur(function(){
-        var startDate = new Date($('#startDate').val());
-        var endDate = new Date($('#endDate').val());
-        var inputDateCh = document.getElementById('dateVal');
-        if(endDate == "Invalid Date") {
-            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-            console.log(startDate);
-            console.log(endDate);
-        } else if(startDate == "Invalid Date"){
-            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-        } else if (startDate > endDate) {
-            inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
-            console.log(startDate);
-            console.log(endDate); 
-        } else {
-            inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
-            console.log(startDate);
-            console.log(endDate);
-        }
-    });
-    
-        
-    $("input#startDate").blur(function(){
-        var startDate = new Date($('#startDate').val());
-        var endDate = new Date($('#endDate').val());
-        var now = new Date();
-        var inputDateCh = document.getElementById('dateVal');
-        if(endDate == "Invalid Date") {
-            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-            console.log(startDate);
-            console.log(endDate);
-        } else if(startDate == "Invalid Date"){
-            inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-        } else if (startDate > endDate) {
-            inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
-            console.log(startDate);
-            console.log(endDate); 
-        } else {
-            inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
-            console.log(startDate);
-            console.log(endDate);
-        }
-    });
-    
-    // location validations     
-    $('input#eventLocation').blur(function(){
-        var location = document.getElementById('eventLocation').value;
-        var inputEventLocationTest = /[a-zA-Z0-9]+/.test(location);
-        var inputLocationCh = document.getElementById('eventLocationVal');
-        if(inputEventLocationTest == true) {
-            inputLocationCh.innerHTML = '<small>' + "Thank you!" + '</small>';
-        } else {
-            inputLocationCh.innerHTML = '<small>' + "Please enter a location" + '</small>';
-        }
-    });
-    
-    // guest list validations 
-    
-    // See main page "application.html.erb" for script         
-    
-
-    
-    //* End new event form validations *
-}); 
+// End new event form validations 
