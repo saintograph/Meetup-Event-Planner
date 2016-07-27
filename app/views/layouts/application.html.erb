@@ -24,6 +24,12 @@
 
       <%= yield %>
     </div>
+    
+    <script>    
+        App = require("./components/app.js.jsx");
+        NewEvent = require("./components/_new_event.js.jsx");
+        AllEvents = require("./components/_all_events.js.jsx");
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1632BmCc46P2zQixsPns5BgaMmsxezRs&libraries=places"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
