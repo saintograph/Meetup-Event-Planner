@@ -11,7 +11,11 @@ Link = ReactRouter.Link;
 hashHistory = ReactRouter.hashHistory;
 browserHistory = ReactRouter.browserHistory;
 Geosuggest = require('react-geosuggest').default;
-
+App = require('./components/app');
+NewEvent = require('./components/new_event');
+AllEvents = require('./components/all_events');
+Footer = require('./components/footer');
+NavBar = require('./components/navbar');
 
 const appDom = document.getElementById('appDom');
 

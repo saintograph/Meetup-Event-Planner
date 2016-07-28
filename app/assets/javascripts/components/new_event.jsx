@@ -1,6 +1,6 @@
 var NewEvent = React.createClass({
 
-    handleclick() {
+    handleclick: function() {
 
         var name = document.getElementById('eventName').value;
         var location = document.getElementById('eventLocation').value;
@@ -30,7 +30,7 @@ var NewEvent = React.createClass({
         });
     },
     
-    validateJS() {
+    validateJS: function() {
         var valid = true;
 
         valid = valid && checkEventName(document.getElementById('eventName').value);
@@ -46,7 +46,7 @@ var NewEvent = React.createClass({
     }, 
 
     
-    render() {
+    render: function() {
 
         return (
             <div>

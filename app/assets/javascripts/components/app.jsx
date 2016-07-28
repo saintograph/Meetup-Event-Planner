@@ -1,19 +1,19 @@
 var App = React.createClass({
     
-    getInitialState() { 
+    getInitialState: function() { 
         return { events: [] } 
     }, 
     
-    componentDidMount() { 
+    componentDidMount: function() { 
         $.getJSON('https://pure-fortress-81588.herokuapp.com/api/v1/events.json', function(response) { this.setState({ events: response }) }); 
     }, 
     
-    handleSubmit(event) { 
+    handleSubmit: function(event) { 
         var newState = this.state.events.concat(event); 
         this.setState({ events: newState }) 
     },
     
-    render() {
+    render: function() {
         return (
 
               <div>

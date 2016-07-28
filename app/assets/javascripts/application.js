@@ -23,10 +23,5 @@
 //= require bootstrap-tagsinput
 //= require ct-paper
 //= require DateTimePicker
-//= require components/app
-//= require components/navbar
-//= require components/footer   
-//= require components/new_event
-//= require components/all_events
 //= require_tree .
 

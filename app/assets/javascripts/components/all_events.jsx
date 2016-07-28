@@ -1,5 +1,5 @@
 var AllEvents = React.createClass({
-    render() {
+    render: function() {
         var events = this.props.events.map(function(event) {
            return (
                <div key={event.id} className="mainList">

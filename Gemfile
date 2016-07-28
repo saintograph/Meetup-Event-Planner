@@ -55,7 +55,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'react-rails'
-gem 'browserify-rails'
+gem 'browserify-rails', '~> 3.1.0'
 gem 'responders'
 gem 'devise'
 gem 'simple_form'

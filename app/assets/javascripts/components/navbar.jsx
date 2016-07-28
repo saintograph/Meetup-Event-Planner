@@ -1,5 +1,5 @@
 var NavBar = React.createClass({
-    render () {
+    render: function() {
         return (
             <div>
                 <nav className="navbar navbar-ct-transparent navbar-relative " role="navigation-demo" id="register-navbar">

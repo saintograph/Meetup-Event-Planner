@@ -1,5 +1,5 @@
 var Footer = React.createClass({
-    render () {
+    render: function() {
         return (
             <div>
                 <footer className="footer-demo section-nude">
