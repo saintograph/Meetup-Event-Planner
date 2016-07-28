@@ -1,6 +1,6 @@
 var NewEvent = React.createClass({
 
-    handleclick: function() {
+    handleClick: function() {
 
         var name = document.getElementById('eventName').value;
         var location = document.getElementById('eventLocation').value;
@@ -23,10 +23,10 @@ var NewEvent = React.createClass({
                 start_date: startDate,
                 end_date: endDate
             }},
-            success: function(event) {
+            success: (function(event) {
                 this.props.handleSubmit(event);
-                window.location.href = "https://pure-fortress-81588.herokuapp.com/";
-            }
+                window.location.href = "http://localhost:3000/";
+            }.bind(this))
         });
     },
     
