@@ -12,7 +12,7 @@ var NewEvent = React.createClass({
         var hostName = document.getElementById('eventHost').value;
 
         $.ajax({
-            url: '/api/v1/events',
+            url: 'https://pure-fortress-81588.herokuapp.com/api/v1/events',
             type: 'POST',
             data: { event: {
                 title: name,
@@ -25,7 +25,7 @@ var NewEvent = React.createClass({
             }},
             success: (function(event) {
                 this.props.handleSubmit(event);
-                window.location.href = "http://localhost:3000/";
+                window.location.href = "https://pure-fortress-81588.herokuapp.com";
             }.bind(this))
         });
     },
