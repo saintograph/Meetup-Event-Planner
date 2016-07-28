@@ -1,8 +1,6 @@
 //= require_self
-//= require react_ujs
 React = require('react');
 ReactDOM = require('react-dom');
-// require additional React components below this line
 ReactRouter = require('react-router');
 Route = ReactRouter.Route;
 Router = ReactRouter.Router;
@@ -13,20 +11,19 @@ Link = ReactRouter.Link;
 hashHistory = ReactRouter.hashHistory;
 browserHistory = ReactRouter.browserHistory;
 Geosuggest = require('react-geosuggest').default;
-// moment = require('moment');
+App = require(['./components/app.jsx'])
+NewEvent = require(['./components/new_event.jsx'])
+AllEvents = require(['./components/all_events.jsx'])
+Footer = require(['./components/footer.jsx'])
+NavBar = require(['./components/navbar.jsx'])
+
+const appDom = document.getElementById('appDom');
 
 
-// 12345678910
-const app = document.getElementById('app');
-
-var routes = (
+ReactDOM.render(     
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={AllEvents}></IndexRoute>
             <Route path="new" component={NewEvent}></Route>
         </Route>
-    </Router>
-);
-
-
-ReactDOM.render( routes, app);
+    </Router>, appDom);

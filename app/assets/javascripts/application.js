@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require reg_validations
-//= require validations
+//= require react_ujs
 //= require components
 //= require moment
+//= require reg_validations
+//= require validations
 //= require bootstrap
 //= require bootstrap-select
 //= require bootstrap-tagsinput
