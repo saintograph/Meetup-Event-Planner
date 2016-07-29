@@ -1,5 +1,10 @@
 var NewEvent = React.createClass({
-
+    getInitialState: function() {
+        return {
+            disabled: true
+        };
+    },
+    
     handleClick: function() {
 
         var name = document.getElementById('eventName').value;
@@ -12,7 +17,7 @@ var NewEvent = React.createClass({
         var hostName = document.getElementById('eventHost').value;
 
         $.ajax({
-            url: 'https://pure-fortress-81588.herokuapp.com/api/v1/events',
+            url: '/api/v1/events',
             type: 'POST',
             data: { event: {
                 title: name,
@@ -25,7 +30,7 @@ var NewEvent = React.createClass({
             }},
             success: (function(event) {
                 this.props.handleSubmit(event);
-                window.location.href = "https://pure-fortress-81588.herokuapp.com";
+                window.location.href = "http://localhost:3000";
             }.bind(this))
         });
     },
@@ -35,16 +40,24 @@ var NewEvent = React.createClass({
 
         valid = valid && checkEventName(document.getElementById('eventName').value);
         valid = valid && checkEventHost(document.getElementById('eventHost').value);
-        valid = valid && checkEventType(document.getElementById('eventType').value);
         valid = valid && checkEventDate();
+        valid = valid && checkEventType(document.getElementById('eventType').value);
         valid = valid && checkGuest();
         
-        $("button#organize_button").prop("disabled", true);
-        if (valid) {
-            $("button#organize_button").prop("disabled", false);
+        if(valid) {
+            this.setState({
+                disabled: false
+            })
+        } else {
+            this.setState ({
+                disabled: true
+            })
         }
-    }, 
-
+        // $("button#organize_button").prop("disabled", true);
+        // if (valid) {
+        //     $("button#organize_button").prop("disabled", false);
+        // }
+    },
     
     render: function() {
 
@@ -81,11 +94,11 @@ var NewEvent = React.createClass({
                                                 <div className="row">
                                                         <div className="col-md-6">
                                                             <label htmlFor="startDate">Start Date/Time </label>
-                                                            <input type="datetime-local" className="form-control" id="startDate" data-field="datetime" required />
+                                                            <input type="datetime-local" className="form-control" onBlur={this.validateJS} id="startDate" data-field="datetime" required />
                                                         </div>
                                                         <div className="col-md-6">
                                                             <label htmlFor="endDate">End Date/Time </label>
-                                                            <input type="datetime-local" className="form-control" id="endDate" data-field="datetime" required/>
+                                                            <input type="datetime-local" className="form-control" onBlur={this.validateJS} id="endDate" data-field="datetime" required/>
                                                         </div>
                                                         <div id="dtBox"></div>
                                                         <div className="col-md-12">
@@ -132,7 +145,7 @@ var NewEvent = React.createClass({
                                         <textarea id="eventInfo" className="form-control" rows="4" placeholder="e.g Please bring sword, spears and giants."></textarea>
                                         <div className="row">
                                             <div className="col-md-4 col-md-offset-4">
-                                                <button className="btn btn-danger btn-block btn-lg btn-fill" id="organize_button" onClick={this.handleClick} >Organize</button>
+                                                <button className="btn btn-danger btn-block btn-lg btn-fill" disabled={this.state.disabled} id="organize_button" onClick={this.handleClick} >Organize</button>
                                             </div>
                                         </div>
                                 </form>

@@ -46,8 +46,8 @@ function checkEventType(obj){
 
 function checkEventDate(){
     var result = true;
-    var dateA = new Date($('#startDate').val());
-    var dateB = new Date($('#endDate').val());
+    var dateA = new Date(document.getElementById('startDate').value);
+    var dateB = new Date(document.getElementById('endDate').value);
     var dateNow = new Date(); 
     if(dateA < now) {
       return result =  false;
