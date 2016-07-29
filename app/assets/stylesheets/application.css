@@ -15,8 +15,6 @@
  *= require demo
  *= require examples
  *= require ct-paper
- *= require DateTimePicker
- *= require bootstrap-tagsinput
  *= require pe-icon-7-stroke
  *= require geosuggest
  *= require_self

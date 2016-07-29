@@ -30,7 +30,7 @@ var NewEvent = React.createClass({
             }},
             success: (function(event) {
                 this.props.handleSubmit(event);
-                window.location.href = "http://localhost:3000";
+                window.location.href = "https://pure-fortress-81588.herokuapp.com";
             }.bind(this))
         });
     },
@@ -43,6 +43,7 @@ var NewEvent = React.createClass({
         valid = valid && checkEventDate();
         valid = valid && checkEventType(document.getElementById('eventType').value);
         valid = valid && checkGuest();
+        valid = valid && checkLocation();
         
         if(valid) {
             this.setState({
@@ -53,10 +54,6 @@ var NewEvent = React.createClass({
                 disabled: true
             })
         }
-        // $("button#organize_button").prop("disabled", true);
-        // if (valid) {
-        //     $("button#organize_button").prop("disabled", false);
-        // }
     },
     
     render: function() {
@@ -94,13 +91,12 @@ var NewEvent = React.createClass({
                                                 <div className="row">
                                                         <div className="col-md-6">
                                                             <label htmlFor="startDate">Start Date/Time </label>
-                                                            <input type="datetime-local" className="form-control" onBlur={this.validateJS} id="startDate" data-field="datetime" required />
+                                                            <input type="datetime-local" className="form-control" onBlur={this.validateJS} id="startDate" required />
                                                         </div>
                                                         <div className="col-md-6">
                                                             <label htmlFor="endDate">End Date/Time </label>
-                                                            <input type="datetime-local" className="form-control" onBlur={this.validateJS} id="endDate" data-field="datetime" required/>
+                                                            <input type="datetime-local" className="form-control" onBlur={this.validateJS} id="endDate" required/>
                                                         </div>
-                                                        <div id="dtBox"></div>
                                                         <div className="col-md-12">
                                                             <p id="dateVal"><small>Lets get it started!</small></p>
                                                         </div>
@@ -110,10 +106,8 @@ var NewEvent = React.createClass({
                                         <div className="row">
                                             <div className="col-md-12 col-xs-12">
                                                 <label htmlFor="eventGuestList">Guest list</label>
-                                                <div className="form-control">
-                                                    <input type="text" id="eventGuestList" data-role="tagsinput" required/>
-                                                </div>
-                                                <p id="guestList2"><small>Who's coming? (add new names by typing and pressing comma ',' after each name)</small></p>
+                                                <input type="text" className="form-control" id="eventGuestList" onBlur={this.validateJS} required/>
+                                                <p id="guestList2"><small>Who's coming? (add names and separate with comma ',' after each name)</small></p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -136,6 +130,7 @@ var NewEvent = React.createClass({
                                                 <Geosuggest
                                                     id="eventLocation"
                                                     required="required"
+                                                    onBlur={this.validateJS}
                                                     className="form-control"
                                                     placeholder="e.g Winterfell" />
                                             <p id="eventLocationVal"><small>Where will the event be held?</small></p>

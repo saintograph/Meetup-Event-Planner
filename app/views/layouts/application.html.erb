@@ -34,20 +34,13 @@
       var startDate = new Date($('#startDate').val());
       var endDate = new Date($('#endDate').val());
       var now = new Date();
-      $("#dtBox").DateTimePicker({
-          dateTimeFormat: "yyyy-MM-ddTHH:mm",
-          dateSeparator: "-",
-          dateTimeSeparator: "T",
-          maxDateTime: moment(endDate).add(30, 'minutes').format("yyyy-MM-ddTHH:mm"),
-          minDateTime: moment(startDate).format("yyyy-MM-ddTHH:mm"),
-          animationDuration: 100
-      });
+
 
 
       $(document).ready(function(){ 
 
-        $('input#guestTags').blur(function(){
-            var guestTags2 = $('.bootstrap-tagsinput').text();
+        $('input#eventGuestList').blur(function(){
+            var guestTags2 = $('#eventGuestList').val();
             var guestListVal = document.getElementById('guestList2');
             if(guestTags2 == "") {
                 guestListVal.innerHTML = '<small>' + "Aww, you need a hug." + '</small>';

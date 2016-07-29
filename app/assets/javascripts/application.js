@@ -20,8 +20,6 @@
 //= require validations
 //= require bootstrap
 //= require bootstrap-select
-//= require bootstrap-tagsinput
 //= require ct-paper
-//= require DateTimePicker
 //= require_tree .
 

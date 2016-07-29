@@ -23,7 +23,7 @@ const appDom = document.getElementById('appDom');
 ReactDOM.render(     
     <Router history={hashHistory}>
         <Route path="/" component={App}>
-            <IndexRoute component={NewEvent}></IndexRoute>
-            <Route path="/all" component={AllEvents}></Route>
+            <IndexRoute component={AllEvents}></IndexRoute>
+            <Route path="/new" component={NewEvent}></Route>
         </Route>
     </Router>, appDom);

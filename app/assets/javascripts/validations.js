@@ -44,6 +44,8 @@ function checkEventType(obj){
     }
 };
 
+// Date validations
+
 function checkEventDate(){
     var result = true;
     var dateA = new Date(document.getElementById('startDate').value);
@@ -68,7 +70,7 @@ function checkEventDate(){
 
 function checkGuest() {
     var result = true;
-    guestNames = $('.bootstrap-tagsinput').text();
+    guestNames = document.getElementById('eventGuestList').value;
     if (guestNames == "") {
         return result = false;
     } else if (guestNames == " ") {
@@ -78,5 +80,18 @@ function checkGuest() {
     }
 }
 
+// Location validations
+
+function checkLocation() {
+    var result = true;
+    locationName = document.getElementById('eventLocation').value;
+    if (locationName == "") {
+        return result = false;
+    } else if (locationName == " ") {
+        return result = false;
+    } else {
+        return result = true;        
+    }
+}
 
 // End new event form validations 

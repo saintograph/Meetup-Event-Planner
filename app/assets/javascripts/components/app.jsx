@@ -6,7 +6,7 @@ var App = React.createClass({
     }, 
     
     componentDidMount: function() { 
-        $.getJSON('/api/v1/events.json', function (result) {
+        $.getJSON('https://pure-fortress-81588.herokuapp.com/api/v1/events.json', function (result) {
         this.setState({ events: result });
         }.bind(this)); 
     }, 
@@ -37,10 +37,10 @@ var App = React.createClass({
                                         <h4>Hey there,<br /><small>organize something awesome</small></h4>
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <button className="btn btn-warning btn-block btn-fill"><Link to="/"><span className="button-text">New Event</span></Link></button>
+                                                <button className="btn btn-warning btn-block btn-fill"><Link to="/"><span className="button-text">All Events</span></Link></button>
                                             </div>
                                             <div className="col-md-6">
-                                                <button className="btn btn-warning btn-block btn-fill"><Link to="/all"><span className="button-text">All Events</span></Link></button>
+                                                <button className="btn btn-warning btn-block btn-fill"><Link to="/new"><span className="button-text">New Event</span></Link></button>
                                             </div>
                                         </div>
                                     </div>
