@@ -13,10 +13,10 @@ var Footer = React.createClass({
                                     </a>
                                 </li>
                                 <li>
-                                    <Link to="/">New Event</Link>
+                                    <Link to="/">All Event</Link>
                                 </li>
                                 <li>
-                                    <Link to="/all">All Events</Link>
+                                    <Link to="/new">New Events</Link>
                                 </li>
                             </ul>
                         </nav>
