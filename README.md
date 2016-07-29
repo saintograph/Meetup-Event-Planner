@@ -13,6 +13,8 @@ Require dependencies : npm, Rails 5, and ruby '2.3.0' or higher. Then :
     $ cd Meetup-Event-Planner
     $ npm install
     $ bundle install
+    $ rails db:migrate
+    
 To run local server after bundle install : 
 
     $ rails s
