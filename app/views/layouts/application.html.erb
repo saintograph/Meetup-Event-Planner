@@ -31,11 +31,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
     <script>
 
-      var startDate = new Date($('#startDate').val());
-      var endDate = new Date($('#endDate').val());
-      var now = new Date();
-
-
 
       $(document).ready(function(){ 
 
@@ -49,42 +44,7 @@
             }
             
         });
-          
-        $("input#startDate").blur(function(){
-            var startDate = new Date($('#startDate').val());
-            var endDate = new Date($('#endDate').val());
-            var now = new Date();
-            var inputDateCh = document.getElementById('dateVal');
-            if(startDate < now) {
-                inputDateCh.innerHTML = '<small>' + "Dates can't be in the past" + "</small>";
-            } else if(endDate == "Invalid Date") {
-                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-            } else if(startDate == "Invalid Date"){
-                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-            } else if (startDate > endDate) {
-                inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
-            } else {
-                inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
-            }
-        });
-          
-        $("input#endDate").blur(function(){
-            var startDate = new Date($('#startDate').val());
-            var endDate = new Date($('#endDate').val());
-            var now = new Date();
-            var inputDateCh = document.getElementById('dateVal');
-            if (startDate > endDate) {
-                inputDateCh.innerHTML = '<small>' + "End date must be after start date" + "</small>";
-            } else if(endDate == "Invalid Date") {
-                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-            } else if(startDate == "Invalid Date"){
-                inputDateCh.innerHTML = '<small>' + "Please enter valid dates" + "</small>";
-            } else {
-                inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
-            }
-        });
-
-          
+    
         // location validations     
         $('input#eventLocation').blur(function(){
             var location = document.getElementById('eventLocation').value;

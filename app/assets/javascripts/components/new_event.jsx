@@ -38,12 +38,15 @@ var NewEvent = React.createClass({
     validateJS: function() {
         var valid = true;
 
-        valid = valid && checkEventName(document.getElementById('eventName').value);
+        if(document.getElementById('dateVal').innerHTML != "Lets get it started!"){
+            checkEventDate()     
+        }
+        valid = valid && checkEventName(document.getElementById('eventName').value) && checkEventDate();
         valid = valid && checkEventHost(document.getElementById('eventHost').value);
-        valid = valid && checkEventDate();
         valid = valid && checkEventType(document.getElementById('eventType').value);
         valid = valid && checkGuest();
         valid = valid && checkLocation();
+
         
         if(valid) {
             this.setState({

@@ -50,18 +50,32 @@ function checkEventDate(){
     var result = true;
     var dateA = new Date(document.getElementById('startDate').value);
     var dateB = new Date(document.getElementById('endDate').value);
-    var dateNow = new Date(); 
-    if(dateA < now) {
+    var dateNow = new Date();
+    var inputDateCh = document.getElementById('dateVal'); 
+    if (dateA < dateNow) {
+      inputDateCh.innerHTML = '<small>' + "Dates can't be in the past" + "</small>";
       return result =  false;
-    } else if (dateB < now) {
-      return result = false;
-    } else if (dateA == "Invalid Date") {
-      return result = false;  
-    } else if (dateB == "Invalid Date") {
+    } else if (dateB.getTime() == dateA.getTime()) {
+      if (dateA < dateNow ) {
+        inputDateCh.innerHTML = '<small>' + "Dates can't be in the past" + "</small>";
+      }
+      inputDateCh.innerHTML = '<small>' + "Start date can't be the same as end date" + "</small>";
       return result = false;
     } else if (dateA > dateB) {
+      if (dateA < dateNow ) {
+        inputDateCh.innerHTML = '<small>' + "Dates can't be in the past" + "</small>";
+      } else {
+        inputDateCh.innerHTML = '<small>' + "End date should be after start date" + "</small>";
+      } 
+      return result = false;
+    } else if (dateA == "Invalid Date") {
+      inputDateCh.innerHTML = '<small>' + "Please provide valid dates" + "</small>";
+      return result = false;  
+    } else if (dateB == "Invalid Date") {
+      inputDateCh.innerHTML = '<small>' + "Please provide valid dates" + "</small>";
       return result = false;
     } else {
+      inputDateCh.innerHTML = '<small>' + "Thank you!" + "</small>";
       return result = true;
     }
 }
