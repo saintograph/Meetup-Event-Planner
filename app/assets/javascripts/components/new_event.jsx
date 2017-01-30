@@ -7,14 +7,14 @@ var NewEvent = React.createClass({
     
     handleClick: function() {
 
-        var name = document.getElementById('eventName').value;
-        var location = document.getElementById('eventLocation').value;
-        var add_info = document.getElementById('eventInfo').value;
-        var startDate = new Date($('#startDate').val());
-        var endDate = new Date($('#endDate').val());
-        var foo = $("#eventGuestList").val();
-        var guests = String(foo.split(" ").join(", "));
-        var hostName = document.getElementById('eventHost').value;
+        let name = document.getElementById('eventName').value;
+        let location = document.getElementById('eventLocation').value;
+        let add_info = document.getElementById('eventInfo').value;
+        let startDate = new Date($('#startDate').val());
+        let endDate = new Date($('#endDate').val());
+        let foo = $("#eventGuestList").val();
+        let guests = String(foo.split(" ").join(", "));
+        let hostName = document.getElementById('eventHost').value;
 
         $.ajax({
             url: '/api/v1/events',
